@@ -1,0 +1,554 @@
+/* =========================================
+   HOW IT WORKS
+========================================= */
+
+.how-it-works {
+  position: relative;
+  width: 100%;
+  padding: 120px 24px;
+  background: #ffffff;
+  overflow: hidden;
+}
+
+.how-it-works::before {
+  content: "";
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  top: 80px;
+  left: -250px;
+  background: radial-gradient(
+    circle,
+    rgba(99, 102, 241, 0.08) 0%,
+    rgba(99, 102, 241, 0) 70%
+  );
+  pointer-events: none;
+}
+
+.how-it-works::after {
+  content: "";
+  position: absolute;
+  width: 450px;
+  height: 450px;
+  bottom: -200px;
+  right: -180px;
+  background: radial-gradient(
+    circle,
+    rgba(139, 92, 246, 0.07) 0%,
+    rgba(139, 92, 246, 0) 70%
+  );
+  pointer-events: none;
+}
+
+
+/* =========================================
+   CONTAINER
+========================================= */
+
+.how-it-works-container {
+  position: relative;
+  z-index: 1;
+  width: min(1180px, 100%);
+  margin: 0 auto;
+}
+
+
+/* =========================================
+   SECTION HEADER
+========================================= */
+
+.how-it-works-header {
+  max-width: 720px;
+  margin: 0 auto 72px;
+  text-align: center;
+}
+
+.section-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 8px 14px;
+  margin-bottom: 18px;
+
+  border: 1px solid rgba(99, 102, 241, 0.16);
+  border-radius: 999px;
+
+  background: rgba(99, 102, 241, 0.06);
+
+  color: #6366f1;
+
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+
+.how-it-works-header h2 {
+  margin: 0;
+
+  color: #111827;
+
+  font-size: clamp(36px, 5vw, 58px);
+  line-height: 1.08;
+  font-weight: 800;
+  letter-spacing: -2px;
+}
+
+.how-it-works-header h2 span {
+  background: linear-gradient(
+    135deg,
+    #6366f1,
+    #8b5cf6
+  );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.how-it-works-header p {
+  max-width: 620px;
+  margin: 22px auto 0;
+
+  color: #6b7280;
+
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+
+/* =========================================
+   STEPS
+========================================= */
+
+.steps-wrapper {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  width: 100%;
+}
+
+.step-item {
+  display: flex;
+  align-items: center;
+
+  flex: 1;
+  min-width: 0;
+}
+
+.step-card {
+  position: relative;
+
+  width: 100%;
+  min-height: 300px;
+
+  padding: 34px 30px;
+
+  border: 1px solid #e5e7eb;
+  border-radius: 24px;
+
+  background: rgba(255, 255, 255, 0.9);
+
+  box-shadow:
+    0 10px 35px rgba(15, 23, 42, 0.05),
+    0 2px 8px rgba(15, 23, 42, 0.03);
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.step-card:hover {
+  transform: translateY(-8px);
+
+  border-color: rgba(99, 102, 241, 0.25);
+
+  box-shadow:
+    0 20px 50px rgba(15, 23, 42, 0.09),
+    0 5px 15px rgba(99, 102, 241, 0.06);
+}
+
+
+/* =========================================
+   STEP NUMBER
+========================================= */
+
+.step-number {
+  position: absolute;
+  top: 22px;
+  right: 24px;
+
+  color: #e5e7eb;
+
+  font-size: 42px;
+  line-height: 1;
+  font-weight: 800;
+  letter-spacing: -2px;
+
+  user-select: none;
+}
+
+
+/* =========================================
+   STEP ICON
+========================================= */
+
+.step-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 64px;
+  height: 64px;
+
+  margin-bottom: 30px;
+
+  border-radius: 18px;
+
+  background: linear-gradient(
+    135deg,
+    rgba(99, 102, 241, 0.1),
+    rgba(139, 92, 246, 0.1)
+  );
+
+  border: 1px solid rgba(99, 102, 241, 0.12);
+
+  font-size: 28px;
+
+  box-shadow:
+    0 8px 20px rgba(99, 102, 241, 0.08);
+}
+
+
+/* =========================================
+   STEP CONTENT
+========================================= */
+
+.step-content {
+  position: relative;
+  z-index: 1;
+}
+
+.step-content h3 {
+  margin: 0 0 12px;
+
+  color: #111827;
+
+  font-size: 21px;
+  line-height: 1.3;
+  font-weight: 750;
+  letter-spacing: -0.4px;
+}
+
+.step-content p {
+  margin: 0;
+
+  color: #6b7280;
+
+  font-size: 15px;
+  line-height: 1.75;
+}
+
+
+/* =========================================
+   CONNECTOR
+========================================= */
+
+.step-connector {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 70px;
+  min-width: 70px;
+}
+
+.step-connector span {
+  position: relative;
+
+  display: block;
+
+  width: 42px;
+  height: 1px;
+
+  background: #d1d5db;
+}
+
+.step-connector span::after {
+  content: "";
+
+  position: absolute;
+  right: -1px;
+  top: 50%;
+
+  width: 7px;
+  height: 7px;
+
+  border-top: 1px solid #9ca3af;
+  border-right: 1px solid #9ca3af;
+
+  transform: translateY(-50%) rotate(45deg);
+}
+
+
+/* =========================================
+   BOTTOM CTA
+========================================= */
+
+.how-it-works-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+
+  margin-top: 72px;
+  padding: 30px 34px;
+
+  border: 1px solid #e5e7eb;
+  border-radius: 22px;
+
+  background: linear-gradient(
+    135deg,
+    #fafafa,
+    #ffffff
+  );
+
+  box-shadow:
+    0 10px 30px rgba(15, 23, 42, 0.04);
+}
+
+.how-it-works-bottom h3 {
+  margin: 0 0 6px;
+
+  color: #111827;
+
+  font-size: 20px;
+  font-weight: 750;
+  letter-spacing: -0.4px;
+}
+
+.how-it-works-bottom p {
+  margin: 0;
+
+  color: #6b7280;
+
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+
+/* =========================================
+   CTA BUTTON
+========================================= */
+
+.how-it-works-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  flex-shrink: 0;
+
+  padding: 13px 20px;
+
+  border: none;
+  border-radius: 12px;
+
+  background: #111827;
+  color: #ffffff;
+
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 650;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.how-it-works-button span {
+  font-size: 18px;
+  line-height: 1;
+
+  transition: transform 0.25s ease;
+}
+
+.how-it-works-button:hover {
+  background: #6366f1;
+
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 10px 24px rgba(99, 102, 241, 0.22);
+}
+
+.how-it-works-button:hover span {
+  transform: translateX(4px);
+}
+
+.how-it-works-button:active {
+  transform: translateY(0);
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 1000px) {
+  .how-it-works {
+    padding: 100px 24px;
+  }
+
+  .how-it-works-header {
+    margin-bottom: 55px;
+  }
+
+  .steps-wrapper {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .step-item {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .step-card {
+    min-height: auto;
+  }
+
+  .step-connector {
+    width: 100%;
+    height: 35px;
+    min-width: 0;
+  }
+
+  .step-connector span {
+    width: 1px;
+    height: 25px;
+  }
+
+  .step-connector span::after {
+    top: auto;
+    right: auto;
+    bottom: -1px;
+
+    transform: translateX(-50%) rotate(135deg);
+  }
+
+  .step-item:last-child .step-connector {
+    display: none;
+  }
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 640px) {
+  .how-it-works {
+    padding: 80px 18px;
+  }
+
+  .how-it-works-header {
+    margin-bottom: 42px;
+  }
+
+  .section-badge {
+    margin-bottom: 15px;
+
+    font-size: 10px;
+    letter-spacing: 1.2px;
+  }
+
+  .how-it-works-header h2 {
+    font-size: 36px;
+    letter-spacing: -1.5px;
+  }
+
+  .how-it-works-header p {
+    margin-top: 18px;
+
+    font-size: 15px;
+    line-height: 1.65;
+  }
+
+  .step-card {
+    padding: 28px 24px;
+    border-radius: 20px;
+  }
+
+  .step-number {
+    top: 20px;
+    right: 20px;
+
+    font-size: 34px;
+  }
+
+  .step-icon {
+    width: 56px;
+    height: 56px;
+
+    margin-bottom: 24px;
+
+    border-radius: 15px;
+
+    font-size: 24px;
+  }
+
+  .step-content h3 {
+    font-size: 19px;
+  }
+
+  .step-content p {
+    font-size: 14px;
+    line-height: 1.7;
+  }
+
+  .how-it-works-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+
+    margin-top: 50px;
+    padding: 26px 24px;
+
+    border-radius: 20px;
+  }
+
+  .how-it-works-bottom h3 {
+    font-size: 18px;
+  }
+
+  .how-it-works-bottom p {
+    font-size: 13px;
+  }
+
+  .how-it-works-button {
+    width: 100%;
+  }
+}
+
+
+/* =========================================
+   SMALL MOBILE
+========================================= */
+
+@media (max-width: 400px) {
+  .how-it-works {
+    padding: 70px 16px;
+  }
+
+  .how-it-works-header h2 {
+    font-size: 32px;
+  }
+
+  .step-card {
+    padding: 24px 20px;
+  }
+}
