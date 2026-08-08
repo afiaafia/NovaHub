@@ -1,0 +1,588 @@
+/* =========================================================
+   NOVAHUB LOGO
+   Abstract N + Dynamic Orbit + Motion
+   ========================================================= */
+
+.nova-logo {
+  --logo-purple: #a855f7;
+  --logo-indigo: #6366f1;
+  --logo-blue: #3b82f6;
+  --logo-cyan: #22d3ee;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+
+  text-decoration: none;
+  user-select: none;
+
+  width: fit-content;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.35s ease,
+    opacity 0.35s ease;
+}
+
+
+/* =========================================================
+   LOGO MARK
+   ========================================================= */
+
+.nova-logo-mark {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  width: 42px;
+  height: 42px;
+
+  border-radius: 12px;
+
+  background:
+    radial-gradient(
+      circle at 50% 50%,
+      rgba(99, 102, 241, 0.14),
+      transparent 65%
+    );
+
+  transition:
+    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 0.45s ease;
+}
+
+
+/* =========================================================
+   SVG
+   ========================================================= */
+
+.nova-logo-svg {
+  width: 100%;
+  height: 100%;
+
+  overflow: visible;
+
+  transform-origin: center;
+
+  transition:
+    transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+
+/* =========================================================
+   MAIN ABSTRACT N
+   ========================================================= */
+
+.nova-main-path {
+  /*
+    The path is initially hidden.
+    It draws itself when the page loads.
+  */
+
+  stroke-dasharray: 180;
+  stroke-dashoffset: 180;
+
+  animation:
+    novaDraw 1.6s cubic-bezier(0.65, 0, 0.35, 1) forwards,
+    novaBreath 4s ease-in-out 1.6s infinite;
+}
+
+
+/* =========================================================
+   INNER PATH
+   ========================================================= */
+
+.nova-inner-path {
+  stroke-dasharray: 140;
+  stroke-dashoffset: 140;
+
+  animation:
+    novaInnerDraw 1.2s ease-out 0.55s forwards,
+    novaInnerGlow 3.5s ease-in-out 2s infinite;
+}
+
+
+/* =========================================================
+   ORBIT
+   ========================================================= */
+
+.nova-orbit {
+  stroke-dasharray: 150;
+  stroke-dashoffset: 150;
+
+  transform-origin: center;
+
+  animation:
+    novaOrbitDraw 1.5s ease-out 0.25s forwards,
+    novaOrbitFloat 6s ease-in-out 2s infinite;
+}
+
+
+/* =========================================================
+   PARTICLES
+   ========================================================= */
+
+.nova-particle {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.nova-particle-one {
+  opacity: 0;
+
+  animation:
+    novaParticleAppear 0.5s ease-out 1.2s forwards,
+    novaParticlePulse 2s ease-in-out 1.7s infinite;
+}
+
+.nova-particle-two {
+  opacity: 0;
+
+  animation:
+    novaParticleAppear 0.5s ease-out 1.5s forwards,
+    novaParticlePulse 2.3s ease-in-out 2s infinite;
+}
+
+
+/* =========================================================
+   STAR PARTICLES
+   ========================================================= */
+
+.nova-star {
+  opacity: 0;
+
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.nova-star-one {
+  animation: novaStarTwinkle 2.8s ease-in-out 1.5s infinite;
+}
+
+.nova-star-two {
+  animation: novaStarTwinkle 3.4s ease-in-out 1.9s infinite;
+}
+
+.nova-star-three {
+  animation: novaStarTwinkle 2.4s ease-in-out 2.2s infinite;
+}
+
+
+/* =========================================================
+   WORDMARK
+   ========================================================= */
+
+.nova-logo-text {
+  display: inline-flex;
+  align-items: baseline;
+
+  font-family:
+    Inter,
+    "Segoe UI",
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif;
+
+  font-size: 20px;
+  line-height: 1;
+
+  letter-spacing: -0.035em;
+
+  white-space: nowrap;
+}
+
+.nova-word {
+  color: #f8fafc;
+
+  font-weight: 650;
+}
+
+.hub-word {
+  font-weight: 500;
+
+  background:
+    linear-gradient(
+      90deg,
+      #a855f7 0%,
+      #6366f1 45%,
+      #22d3ee 100%
+    );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+
+/* =========================================================
+   HOVER
+   ========================================================= */
+
+.nova-logo:hover {
+  transform: translateY(-1px);
+}
+
+.nova-logo:hover .nova-logo-mark {
+  transform: scale(1.08) rotate(-3deg);
+
+  filter:
+    drop-shadow(0 0 8px rgba(168, 85, 247, 0.35))
+    drop-shadow(0 0 14px rgba(34, 211, 238, 0.18));
+}
+
+.nova-logo:hover .nova-logo-svg {
+  transform: rotate(3deg) scale(1.03);
+}
+
+.nova-logo:hover .nova-main-path {
+  animation:
+    novaHoverPulse 1.2s ease-in-out infinite;
+}
+
+.nova-logo:hover .nova-orbit {
+  opacity: 0.95;
+
+  animation:
+    novaOrbitSpin 2.2s linear infinite;
+}
+
+.nova-logo:hover .nova-particle-one {
+  animation:
+    novaParticleMoveOne 1.8s linear infinite;
+}
+
+.nova-logo:hover .nova-particle-two {
+  animation:
+    novaParticleMoveTwo 1.8s linear infinite;
+}
+
+.nova-logo:hover .nova-star {
+  opacity: 1;
+}
+
+
+/* =========================================================
+   ACTIVE / CLICK
+   ========================================================= */
+
+.nova-logo:active .nova-logo-mark {
+  transform: scale(0.94);
+}
+
+
+/* =========================================================
+   SMALL SIZE
+   ========================================================= */
+
+.nova-logo-small {
+  gap: 8px;
+}
+
+.nova-logo-small .nova-logo-mark {
+  width: 34px;
+  height: 34px;
+}
+
+.nova-logo-small .nova-logo-text {
+  font-size: 17px;
+}
+
+
+/* =========================================================
+   MEDIUM SIZE
+   ========================================================= */
+
+.nova-logo-medium {
+  gap: 10px;
+}
+
+.nova-logo-medium .nova-logo-mark {
+  width: 42px;
+  height: 42px;
+}
+
+.nova-logo-medium .nova-logo-text {
+  font-size: 20px;
+}
+
+
+/* =========================================================
+   LARGE SIZE
+   ========================================================= */
+
+.nova-logo-large {
+  gap: 12px;
+}
+
+.nova-logo-large .nova-logo-mark {
+  width: 54px;
+  height: 54px;
+}
+
+.nova-logo-large .nova-logo-text {
+  font-size: 25px;
+}
+
+
+/* =========================================================
+   KEYFRAMES — DRAW
+   ========================================================= */
+
+@keyframes novaDraw {
+  0% {
+    stroke-dashoffset: 180;
+    opacity: 0;
+  }
+
+  20% {
+    opacity: 1;
+  }
+
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+}
+
+
+@keyframes novaInnerDraw {
+  0% {
+    stroke-dashoffset: 140;
+    opacity: 0;
+  }
+
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 0.8;
+  }
+}
+
+
+@keyframes novaOrbitDraw {
+  0% {
+    stroke-dashoffset: 150;
+    opacity: 0;
+  }
+
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 0.55;
+  }
+}
+
+
+/* =========================================================
+   KEYFRAMES — IDLE MOTION
+   ========================================================= */
+
+@keyframes novaBreath {
+  0%,
+  100% {
+    filter:
+      drop-shadow(0 0 2px rgba(168, 85, 247, 0.15));
+  }
+
+  50% {
+    filter:
+      drop-shadow(0 0 7px rgba(99, 102, 241, 0.32))
+      drop-shadow(0 0 12px rgba(34, 211, 238, 0.12));
+  }
+}
+
+
+@keyframes novaInnerGlow {
+  0%,
+  100% {
+    opacity: 0.55;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+
+@keyframes novaOrbitFloat {
+  0%,
+  100% {
+    transform: rotate(-1deg) scale(1);
+  }
+
+  50% {
+    transform: rotate(2deg) scale(1.025);
+  }
+}
+
+
+/* =========================================================
+   PARTICLE ANIMATION
+   ========================================================= */
+
+@keyframes novaParticleAppear {
+  from {
+    opacity: 0;
+    transform: scale(0);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+
+@keyframes novaParticlePulse {
+  0%,
+  100% {
+    opacity: 0.45;
+    transform: scale(0.8);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.35);
+  }
+}
+
+
+/* =========================================================
+   HOVER MOTION
+   ========================================================= */
+
+@keyframes novaHoverPulse {
+  0%,
+  100% {
+    filter:
+      drop-shadow(0 0 3px rgba(168, 85, 247, 0.25));
+  }
+
+  50% {
+    filter:
+      drop-shadow(0 0 8px rgba(168, 85, 247, 0.55))
+      drop-shadow(0 0 14px rgba(34, 211, 238, 0.25));
+  }
+}
+
+
+@keyframes novaOrbitSpin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+@keyframes novaParticleMoveOne {
+  0% {
+    transform: translate(0, 0) scale(0.8);
+  }
+
+  25% {
+    transform: translate(8px, -9px) scale(1.15);
+  }
+
+  50% {
+    transform: translate(22px, -2px) scale(1);
+  }
+
+  75% {
+    transform: translate(31px, -10px) scale(1.15);
+  }
+
+  100% {
+    transform: translate(40px, -2px) scale(0.8);
+  }
+}
+
+
+@keyframes novaParticleMoveTwo {
+  0% {
+    transform: translate(0, 0) scale(0.8);
+  }
+
+  25% {
+    transform: translate(-8px, 7px) scale(1.15);
+  }
+
+  50% {
+    transform: translate(-18px, 2px) scale(1);
+  }
+
+  75% {
+    transform: translate(-27px, 8px) scale(1.15);
+  }
+
+  100% {
+    transform: translate(-35px, 0) scale(0.8);
+  }
+}
+
+
+/* =========================================================
+   STAR TWINKLE
+   ========================================================= */
+
+@keyframes novaStarTwinkle {
+  0%,
+  100% {
+    opacity: 0.15;
+    transform: scale(0.5);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.5);
+  }
+}
+
+
+/* =========================================================
+   ACCESSIBILITY
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .nova-logo *,
+  .nova-logo::before,
+  .nova-logo::after {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .nova-main-path,
+  .nova-inner-path,
+  .nova-orbit {
+    stroke-dashoffset: 0;
+  }
+
+  .nova-particle,
+  .nova-star {
+    opacity: 1;
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 640px) {
+  .nova-logo-medium .nova-logo-mark {
+    width: 38px;
+    height: 38px;
+  }
+
+  .nova-logo-medium .nova-logo-text {
+    font-size: 18px;
+  }
+}

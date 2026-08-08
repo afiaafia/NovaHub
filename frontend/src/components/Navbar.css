@@ -1,0 +1,240 @@
+/* =========================
+   Navbar Wrapper
+========================= */
+
+.navbar-wrapper {
+  position: fixed;
+  top: 20px;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  padding: 0 32px;
+}
+
+
+/* =========================
+   Navbar
+========================= */
+
+.navbar {
+  max-width: 1100px;
+  height: 72px;
+  margin: 0 auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 22px;
+
+  background: rgba(5, 7, 20, 0.72);
+
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 18px;
+
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+
+  box-shadow:
+    0 10px 40px rgba(0, 0, 0, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+
+/* =========================
+   Brand
+========================= */
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  color: #ffffff;
+  text-decoration: none;
+
+  flex-shrink: 0;
+}
+
+
+/* =========================
+   Logo Placeholder
+========================= */
+
+.logo-placeholder {
+  width: 34px;
+  height: 34px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px dashed rgba(139, 92, 246, 0.65);
+  border-radius: 9px;
+
+  color: rgba(255, 255, 255, 0.45);
+
+  font-size: 7px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+
+  background: rgba(99, 102, 241, 0.08);
+}
+
+
+/* =========================
+   Brand Name
+========================= */
+
+.brand-name {
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+
+  color: rgba(255, 255, 255, 0.92);
+}
+
+
+/* =========================
+   Navigation Links
+========================= */
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.nav-links a {
+  position: relative;
+
+  color: rgba(255, 255, 255, 0.68);
+
+  text-decoration: none;
+
+  font-size: 13px;
+  font-weight: 500;
+
+  transition:
+    color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+
+/* Hover underline */
+
+.nav-links a::after {
+  content: "";
+
+  position: absolute;
+
+  left: 50%;
+  bottom: -8px;
+
+  width: 0;
+  height: 2px;
+
+  transform: translateX(-50%);
+
+  border-radius: 999px;
+
+  background: linear-gradient(
+    90deg,
+    #8b5cf6,
+    #3b82f6
+  );
+
+  box-shadow:
+    0 0 10px rgba(99, 102, 241, 0.8);
+
+  transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+  width: 18px;
+}
+
+
+/* =========================
+   CTA Button
+========================= */
+
+.nav-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 104px;
+  height: 40px;
+
+  padding: 0 20px;
+
+  border-radius: 10px;
+
+  color: #ffffff;
+  text-decoration: none;
+
+  font-size: 13px;
+  font-weight: 600;
+
+  background: linear-gradient(
+    135deg,
+    #8b5cf6,
+    #3b82f6
+  );
+
+  box-shadow:
+    0 8px 25px rgba(99, 102, 241, 0.28);
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.nav-button:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 12px 30px rgba(99, 102, 241, 0.42);
+}
+
+
+/* =========================
+   Responsive
+========================= */
+
+@media (max-width: 900px) {
+  .nav-links {
+    gap: 18px;
+  }
+
+  .nav-links a {
+    font-size: 12px;
+  }
+}
+
+
+@media (max-width: 760px) {
+  .navbar-wrapper {
+    padding: 0 16px;
+  }
+
+  .navbar {
+    height: 64px;
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  .nav-button {
+    min-width: 92px;
+    height: 38px;
+    padding: 0 16px;
+  }
+}
