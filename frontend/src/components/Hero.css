@@ -1,116 +1,278 @@
-/* ========================================
-   NOVAHUB — HERO SECTION
-   ======================================== */
+/* =========================================================
+   NOVAHUB HERO
+   Premium dark-space SaaS hero
+========================================================= */
 
 .hero {
   position: relative;
   min-height: calc(100vh - 80px);
-  display: flex;
-  align-items: center;
+  padding: 90px 32px 120px;
   overflow: hidden;
-  padding: 90px 0 110px;
+  isolation: isolate;
   background:
     radial-gradient(
-      circle at 78% 42%,
-      rgba(99, 102, 241, 0.12),
+      circle at 72% 38%,
+      rgba(76, 29, 149, 0.2),
       transparent 32%
     ),
     radial-gradient(
-      circle at 15% 20%,
-      rgba(139, 92, 246, 0.08),
+      circle at 18% 72%,
+      rgba(37, 99, 235, 0.12),
       transparent 28%
-    );
+    ),
+    #03040b;
+  color: #ffffff;
 }
 
-/* ========================================
+/* =========================================================
+   BACKGROUND
+========================================================= */
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: -2;
+}
+
+.hero-glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+  opacity: 0.5;
+}
+
+.hero-glow-one {
+  width: 420px;
+  height: 420px;
+  top: 12%;
+  left: 28%;
+  background: rgba(124, 58, 237, 0.18);
+  animation: glowFloatOne 8s ease-in-out infinite alternate;
+}
+
+.hero-glow-two {
+  width: 340px;
+  height: 340px;
+  right: 8%;
+  top: 30%;
+  background: rgba(37, 99, 235, 0.16);
+  animation: glowFloatTwo 10s ease-in-out infinite alternate;
+}
+
+.hero-glow-three {
+  width: 300px;
+  height: 300px;
+  left: 2%;
+  bottom: 5%;
+  background: rgba(6, 182, 212, 0.1);
+  animation: glowFloatThree 9s ease-in-out infinite alternate;
+}
+
+/* Stars */
+.hero-stars {
+  position: absolute;
+  inset: 0;
+  opacity: 0.5;
+  background-image:
+    radial-gradient(circle, rgba(255, 255, 255, 0.75) 1px, transparent 1px),
+    radial-gradient(circle, rgba(139, 92, 246, 0.7) 1px, transparent 1px),
+    radial-gradient(circle, rgba(34, 211, 238, 0.5) 1px, transparent 1px);
+  background-size:
+    150px 150px,
+    230px 230px,
+    310px 310px;
+  background-position:
+    20px 30px,
+    80px 100px,
+    130px 40px;
+}
+
+/* =========================================================
+   ORBITS
+========================================================= */
+
+.hero-orbit {
+  position: absolute;
+  border: 1px solid rgba(139, 92, 246, 0.12);
+  border-radius: 50%;
+  transform: rotate(-22deg);
+}
+
+.hero-orbit-one {
+  width: 900px;
+  height: 330px;
+  right: -300px;
+  top: 20%;
+}
+
+.hero-orbit-two {
+  width: 700px;
+  height: 250px;
+  right: -190px;
+  top: 28%;
+  border-color: rgba(34, 211, 238, 0.08);
+}
+
+/* =========================================================
+   PLANET
+========================================================= */
+
+.hero-planet {
+  position: absolute;
+  width: 620px;
+  height: 620px;
+  right: -390px;
+  bottom: -390px;
+  border-radius: 50%;
+  background:
+    radial-gradient(
+      circle at 30% 28%,
+      rgba(147, 197, 253, 0.3),
+      transparent 7%
+    ),
+    radial-gradient(
+      circle at 35% 30%,
+      #312e81 0%,
+      #172554 28%,
+      #080b1d 62%,
+      #02030a 100%
+    );
+  box-shadow:
+    0 0 70px rgba(124, 58, 237, 0.25),
+    inset 30px 10px 80px rgba(59, 130, 246, 0.18);
+}
+
+.planet-glow {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  box-shadow:
+    -20px -20px 70px rgba(139, 92, 246, 0.3),
+    -30px -5px 30px rgba(34, 211, 238, 0.16);
+}
+
+/* =========================================================
    CONTAINER
-   ======================================== */
+========================================================= */
 
 .hero-container {
-  width: min(1180px, 92%);
+  position: relative;
+  z-index: 2;
+  width: min(1380px, 100%);
   margin: 0 auto;
 
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: minmax(390px, 0.82fr) minmax(600px, 1.18fr);
   align-items: center;
-  gap: 70px;
+  gap: 50px;
 }
 
-/* ========================================
-   HERO CONTENT
-   ======================================== */
+/* =========================================================
+   CONTENT
+========================================================= */
 
 .hero-content {
   position: relative;
-  z-index: 2;
-  max-width: 620px;
+  z-index: 5;
+  max-width: 590px;
 }
-
-/* Badge */
 
 .hero-badge {
-  display: inline-flex;
+  width: fit-content;
+  display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 9px;
 
-  margin-bottom: 24px;
   padding: 9px 15px;
 
-  border: 1px solid rgba(99, 102, 241, 0.2);
+  border: 1px solid rgba(139, 92, 246, 0.25);
   border-radius: 999px;
 
-  background: rgba(99, 102, 241, 0.07);
+  background: rgba(15, 15, 35, 0.55);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
 
-  color: #6366f1;
-  font-size: 13px;
+  color: #cbd5e1;
+  font-size: 12px;
   font-weight: 600;
   letter-spacing: 0.02em;
+
+  box-shadow:
+    0 0 25px rgba(124, 58, 237, 0.08),
+    inset 0 1px rgba(255, 255, 255, 0.05);
+
+  animation: badgeFloat 5s ease-in-out infinite;
 }
 
-/* Title */
+.badge-icon {
+  color: #a78bfa;
+  font-size: 15px;
+  animation: badgeSpin 5s linear infinite;
+}
+
+/* =========================================================
+   TITLE
+========================================================= */
 
 .hero-title {
-  margin: 0;
+  margin: 28px 0 24px;
 
-  font-size: clamp(48px, 6vw, 76px);
-  line-height: 1.02;
+  display: flex;
+  flex-direction: column;
+
+  font-size: clamp(54px, 5.1vw, 82px);
+  line-height: 0.99;
   letter-spacing: -0.055em;
   font-weight: 800;
-
-  color: #111827;
 }
 
-.hero-title span {
+.hero-title > span {
   display: block;
+  color: #f8fafc;
+}
+
+.hero-title-gradient {
+  width: fit-content;
 
   background: linear-gradient(
-    135deg,
-    #6366f1 0%,
-    #8b5cf6 50%,
-    #a855f7 100%
+    100deg,
+    #8b5cf6 0%,
+    #6366f1 28%,
+    #3b82f6 58%,
+    #22d3ee 82%,
+    #8b5cf6 100%
   );
+
+  background-size: 250% auto;
+  background-position: 0% center;
 
   -webkit-background-clip: text;
   background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: transparent;
+
+  animation: titleGradient 7s linear infinite;
 }
 
-/* Description */
+/* =========================================================
+   DESCRIPTION
+========================================================= */
 
 .hero-description {
-  max-width: 570px;
+  max-width: 540px;
+  margin: 0;
 
-  margin: 26px 0 0;
+  color: #94a3b8;
 
-  color: #6b7280;
-
-  font-size: 17px;
+  font-size: 16px;
   line-height: 1.8;
+  font-weight: 400;
 }
 
-/* ========================================
-   HERO ACTIONS
-   ======================================== */
+/* =========================================================
+   BUTTONS
+========================================================= */
 
 .hero-actions {
   display: flex;
@@ -120,647 +282,1311 @@
   margin-top: 34px;
 }
 
-.hero-btn {
+.hero-button {
+  position: relative;
+
+  min-height: 48px;
+  padding: 0 21px;
+
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  gap: 11px;
 
-  min-height: 50px;
-  padding: 0 22px;
+  border-radius: 13px;
 
-  border-radius: 12px;
-
-  font-size: 14px;
-  font-weight: 650;
+  font-size: 13px;
+  font-weight: 700;
   text-decoration: none;
 
   transition:
-    transform 0.25s ease,
-    box-shadow 0.25s ease,
-    background 0.25s ease;
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    border-color 0.3s ease,
+    background 0.3s ease;
+
+  overflow: hidden;
 }
 
-.hero-btn-primary {
+.hero-button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 80%;
+  height: 100%;
+
+  background: linear-gradient(
+    100deg,
+    transparent,
+    rgba(255, 255, 255, 0.22),
+    transparent
+  );
+
+  transform: skewX(-20deg);
+  transition: left 0.6s ease;
+}
+
+.hero-button:hover::before {
+  left: 140%;
+}
+
+.hero-button-primary {
   color: #ffffff;
 
   background: linear-gradient(
-    135deg,
-    #6366f1,
-    #7c3aed
+    110deg,
+    #7c3aed,
+    #6366f1 50%,
+    #2563eb
   );
 
+  border: 1px solid rgba(255, 255, 255, 0.08);
+
   box-shadow:
-    0 10px 30px rgba(99, 102, 241, 0.25);
+    0 10px 35px rgba(99, 102, 241, 0.25),
+    0 0 30px rgba(124, 58, 237, 0.12);
 }
 
-.hero-btn-primary span {
+.hero-button-primary:hover {
+  transform: translateY(-3px);
+
+  box-shadow:
+    0 15px 40px rgba(99, 102, 241, 0.35),
+    0 0 45px rgba(124, 58, 237, 0.18);
+}
+
+.button-arrow {
   font-size: 18px;
-  transition: transform 0.25s ease;
+  transition: transform 0.3s ease;
 }
 
-.hero-btn-primary:hover {
-  transform: translateY(-2px);
-
-  box-shadow:
-    0 14px 35px rgba(99, 102, 241, 0.35);
-}
-
-.hero-btn-primary:hover span {
+.hero-button-primary:hover .button-arrow {
   transform: translateX(4px);
 }
 
-.hero-btn-secondary {
-  color: #374151;
+.hero-button-secondary {
+  color: #dbe4f0;
 
-  border: 1px solid #e5e7eb;
+  border: 1px solid rgba(148, 163, 184, 0.2);
 
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(15, 23, 42, 0.42);
+
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 
-.hero-btn-secondary:hover {
-  transform: translateY(-2px);
+.hero-button-secondary:hover {
+  transform: translateY(-3px);
 
-  border-color: #d1d5db;
+  border-color: rgba(139, 92, 246, 0.55);
 
-  background: #ffffff;
+  background: rgba(76, 29, 149, 0.14);
 
   box-shadow:
-    0 10px 25px rgba(17, 24, 39, 0.07);
+    0 12px 35px rgba(124, 58, 237, 0.12);
 }
 
-/* ========================================
-   HERO STATS
-   ======================================== */
-
-.hero-stats {
-  display: flex;
-  align-items: center;
-
-  margin-top: 50px;
-}
-
-.hero-stat {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-}
-
-.hero-stat strong {
-  color: #111827;
-
-  font-size: 18px;
-  line-height: 1;
-  font-weight: 750;
-}
-
-.hero-stat span {
-  color: #9ca3af;
-
-  font-size: 11px;
-  font-weight: 600;
-
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-}
-
-.hero-stat-divider {
-  width: 1px;
-  height: 30px;
-
-  margin: 0 24px;
-
-  background: #e5e7eb;
-}
-
-/* ========================================
-   HERO VISUAL
-   ======================================== */
-
-.hero-visual {
-  position: relative;
-
-  min-height: 530px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* Glow */
-
-.hero-glow {
-  position: absolute;
-
-  width: 430px;
-  height: 430px;
-
-  border-radius: 50%;
-
-  background:
-    radial-gradient(
-      circle,
-      rgba(99, 102, 241, 0.17),
-      rgba(139, 92, 246, 0.08) 45%,
-      transparent 70%
-    );
-
-  filter: blur(8px);
-
-  pointer-events: none;
-}
-
-/* ========================================
-   ORBITS
-   ======================================== */
-
-.hero-orbit {
-  position: absolute;
-
-  border: 1px solid rgba(99, 102, 241, 0.09);
-
-  border-radius: 50%;
-
-  pointer-events: none;
-}
-
-.orbit-one {
-  width: 470px;
-  height: 470px;
-
-  transform: rotate(22deg);
-}
-
-.orbit-two {
-  width: 370px;
-  height: 370px;
-
-  transform: rotate(-25deg);
-}
-
-/* ========================================
-   WORKSPACE CARD
-   ======================================== */
-
-.workspace-card {
-  position: relative;
-  z-index: 3;
-
-  width: min(480px, 90%);
-
-  overflow: hidden;
-
-  border: 1px solid rgba(255, 255, 255, 0.8);
-  border-radius: 22px;
-
-  background: rgba(255, 255, 255, 0.82);
-
-  box-shadow:
-    0 35px 80px rgba(31, 41, 55, 0.14),
-    0 8px 25px rgba(99, 102, 241, 0.08);
-
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-
-  transform: perspective(1000px) rotateY(-4deg) rotateX(2deg);
+.button-play {
+  color: #a78bfa;
+  font-size: 15px;
 
   transition:
-    transform 0.5s ease,
-    box-shadow 0.5s ease;
+    transform 0.3s ease,
+    color 0.3s ease;
 }
 
-.workspace-card:hover {
-  transform: perspective(1000px) rotateY(0) rotateX(0)
-    translateY(-5px);
-
-  box-shadow:
-    0 40px 90px rgba(31, 41, 55, 0.18),
-    0 12px 30px rgba(99, 102, 241, 0.1);
+.hero-button-secondary:hover .button-play {
+  transform: translateX(4px);
+  color: #22d3ee;
 }
 
-/* ========================================
-   WORKSPACE HEADER
-   ======================================== */
+/* =========================================================
+   SOCIAL PROOF
+========================================================= */
 
-.workspace-header {
+.hero-social-proof {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  gap: 15px;
 
-  padding: 18px 20px;
-
-  border-bottom: 1px solid #f0f0f4;
-
-  background: rgba(255, 255, 255, 0.7);
+  margin-top: 32px;
 }
 
-.workspace-brand {
+.hero-avatars {
   display: flex;
   align-items: center;
-  gap: 11px;
 }
 
-.workspace-logo {
-  width: 38px;
-  height: 38px;
+.avatar {
+  width: 30px;
+  height: 30px;
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: grid;
+  place-items: center;
 
-  border-radius: 11px;
+  margin-left: -7px;
 
-  color: #ffffff;
+  border: 2px solid #070812;
+  border-radius: 50%;
 
-  font-size: 17px;
-
-  background: linear-gradient(
-    135deg,
-    #6366f1,
-    #8b5cf6
-  );
-
-  box-shadow:
-    0 7px 18px rgba(99, 102, 241, 0.25);
-}
-
-.workspace-label {
-  display: block;
-
-  color: #111827;
-
+  color: white;
   font-size: 10px;
   font-weight: 800;
 
-  letter-spacing: 0.12em;
+  box-shadow: 0 0 15px rgba(99, 102, 241, 0.15);
 }
 
-.workspace-brand p {
-  margin: 2px 0 0;
-
-  color: #9ca3af;
-
-  font-size: 11px;
+.avatar:first-child {
+  margin-left: 0;
 }
 
-.workspace-status {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-
-  color: #6b7280;
-
-  font-size: 10px;
-  font-weight: 600;
+.avatar-one {
+  background: linear-gradient(135deg, #7c3aed, #2563eb);
 }
 
-.workspace-status span {
-  width: 7px;
-  height: 7px;
-
-  border-radius: 50%;
-
-  background: #22c55e;
-
-  box-shadow:
-    0 0 0 4px rgba(34, 197, 94, 0.1);
+.avatar-two {
+  background: linear-gradient(135deg, #0891b2, #2563eb);
 }
 
-/* ========================================
-   WORKSPACE CONTENT
-   ======================================== */
-
-.workspace-content {
-  padding: 24px;
+.avatar-three {
+  background: linear-gradient(135deg, #db2777, #7c3aed);
 }
 
-.workspace-heading {
-  margin-bottom: 20px;
+.avatar-four {
+  background: linear-gradient(135deg, #2563eb, #06b6d4);
 }
 
-.workspace-heading span {
-  display: block;
-
-  margin-bottom: 4px;
-
-  color: #9ca3af;
-
-  font-size: 11px;
-  font-weight: 500;
-}
-
-.workspace-heading h3 {
-  margin: 0;
-
-  color: #111827;
-
-  font-size: 22px;
-  font-weight: 750;
-  letter-spacing: -0.03em;
-}
-
-/* ========================================
-   MINI CARDS
-   ======================================== */
-
-.workspace-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 12px;
-}
-
-.mini-card {
-  position: relative;
-
-  min-height: 112px;
-
+.hero-rating {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-
-  padding: 15px;
-
-  border: 1px solid #f0f0f5;
-  border-radius: 15px;
-
-  background: rgba(249, 250, 252, 0.8);
-
-  transition:
-    transform 0.25s ease,
-    border-color 0.25s ease,
-    box-shadow 0.25s ease;
+  gap: 2px;
 }
 
-.mini-card:hover {
-  transform: translateY(-3px);
+.rating-stars {
+  color: #fbbf24;
+  font-size: 13px;
+  letter-spacing: 2px;
+}
 
-  border-color: rgba(99, 102, 241, 0.15);
+.rating-text {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+
+  color: #64748b;
+  font-size: 11px;
+}
+
+.rating-text strong {
+  color: #cbd5e1;
+}
+
+/* =========================================================
+   DASHBOARD VISUAL
+========================================================= */
+
+.hero-visual {
+  position: relative;
+  min-width: 0;
+  z-index: 4;
+
+  padding: 35px 20px 55px 15px;
+}
+
+/* Main dashboard */
+.dashboard-preview {
+  position: relative;
+
+  width: 100%;
+
+  border: 1px solid rgba(129, 140, 248, 0.34);
+  border-radius: 22px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(16, 18, 40, 0.94),
+      rgba(4, 7, 19, 0.97)
+    );
 
   box-shadow:
-    0 10px 25px rgba(31, 41, 55, 0.06);
+    0 35px 100px rgba(0, 0, 0, 0.6),
+    0 0 55px rgba(99, 102, 241, 0.13),
+    inset 0 1px rgba(255, 255, 255, 0.08);
+
+  overflow: hidden;
+
+  transform: perspective(1600px) rotateY(-2deg);
+
+  animation: dashboardFloat 7s ease-in-out infinite;
 }
 
-.mini-card-icon {
-  width: 33px;
+.dashboard-preview::before {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  background:
+    linear-gradient(
+      115deg,
+      rgba(255, 255, 255, 0.06),
+      transparent 18%,
+      transparent 75%,
+      rgba(124, 58, 237, 0.06)
+    );
+
+  pointer-events: none;
+}
+
+/* =========================================================
+   DASHBOARD TOPBAR
+========================================================= */
+
+.dashboard-topbar {
+  height: 61px;
+
+  display: grid;
+  grid-template-columns: 150px minmax(180px, 1fr) 150px;
+  align-items: center;
+  gap: 20px;
+
+  padding: 0 17px;
+
+  border-bottom: 1px solid rgba(148, 163, 184, 0.08);
+
+  background: rgba(5, 8, 20, 0.65);
+}
+
+.dashboard-brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  color: #e2e8f0;
+
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.dashboard-logo {
+  width: 25px;
+  height: 25px;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 7px;
+
+  color: white;
+
+  background: linear-gradient(
+    135deg,
+    #7c3aed,
+    #2563eb
+  );
+
+  box-shadow:
+    0 0 15px rgba(124, 58, 237, 0.35);
+}
+
+.dashboard-search {
   height: 33px;
 
   display: flex;
   align-items: center;
-  justify-content: center;
+  gap: 8px;
 
+  padding: 0 10px;
+
+  border: 1px solid rgba(148, 163, 184, 0.1);
   border-radius: 9px;
 
-  background: #ffffff;
+  background: rgba(15, 23, 42, 0.6);
 
-  font-size: 16px;
+  color: #64748b;
+
+  font-size: 9px;
+}
+
+.search-icon {
+  font-size: 15px;
+  color: #94a3b8;
+}
+
+.dashboard-search kbd {
+  margin-left: auto;
+
+  padding: 2px 5px;
+
+  border: 1px solid rgba(148, 163, 184, 0.12);
+  border-radius: 4px;
+
+  color: #64748b;
+  font-size: 8px;
+}
+
+.dashboard-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 9px;
+}
+
+.dashboard-actions button {
+  width: 27px;
+  height: 27px;
+
+  display: grid;
+  place-items: center;
+
+  border: 0;
+  border-radius: 7px;
+
+  color: #64748b;
+  background: transparent;
+
+  cursor: pointer;
+}
+
+.dashboard-actions button:hover {
+  color: #c4b5fd;
+  background: rgba(124, 58, 237, 0.1);
+}
+
+.dashboard-avatar {
+  width: 27px;
+  height: 27px;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 50%;
+
+  color: white;
+  font-size: 9px;
+  font-weight: 800;
+
+  background:
+    linear-gradient(
+      135deg,
+      #7c3aed,
+      #06b6d4
+    );
 
   box-shadow:
-    0 4px 10px rgba(31, 41, 55, 0.06);
+    0 0 14px rgba(124, 58, 237, 0.2);
 }
 
-.mini-card span {
-  margin-top: 10px;
+/* =========================================================
+   DASHBOARD BODY
+========================================================= */
 
-  color: #374151;
-
-  font-size: 12px;
-  font-weight: 650;
+.dashboard-body {
+  display: grid;
+  grid-template-columns: 135px 1fr;
+  min-height: 355px;
 }
 
-.mini-card small {
-  margin-top: 3px;
+/* =========================================================
+   SIDEBAR
+========================================================= */
 
-  color: #9ca3af;
+.dashboard-sidebar {
+  padding: 19px 10px;
 
-  font-size: 10px;
+  border-right: 1px solid rgba(148, 163, 184, 0.07);
+
+  background: rgba(3, 5, 15, 0.5);
 }
 
-/* ========================================
-   PROGRESS
-   ======================================== */
-
-.workspace-progress {
-  margin-top: 18px;
-
-  padding: 15px;
-
-  border: 1px solid #f0f0f5;
-  border-radius: 14px;
-
-  background: #fafaff;
+.sidebar-section {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
 }
 
-.progress-header {
+.sidebar-label {
+  padding: 0 9px 7px;
+
+  color: #475569;
+
+  font-size: 8px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.sidebar-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  min-height: 29px;
+  padding: 0 9px;
+
+  border-radius: 7px;
+
+  color: #64748b;
+
+  font-size: 9px;
+
+  transition:
+    color 0.25s ease,
+    background 0.25s ease;
+}
+
+.sidebar-item span {
+  width: 14px;
+  text-align: center;
+  color: #64748b;
+}
+
+.sidebar-item:hover {
+  color: #cbd5e1;
+  background: rgba(124, 58, 237, 0.08);
+}
+
+.sidebar-item-active {
+  color: #e0e7ff;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(124, 58, 237, 0.2),
+      rgba(59, 130, 246, 0.08)
+    );
+
+  box-shadow:
+    inset 2px 0 #8b5cf6;
+}
+
+.sidebar-item-active span {
+  color: #a78bfa;
+}
+
+.sidebar-growth {
+  margin-top: 24px;
+}
+
+.sidebar-system {
+  margin-top: 24px;
+}
+
+/* =========================================================
+   DASHBOARD MAIN
+========================================================= */
+
+.dashboard-main {
+  min-width: 0;
+  padding: 20px;
+}
+
+/* Welcome */
+.dashboard-welcome {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+
+  margin-bottom: 18px;
+}
+
+.dashboard-date {
+  display: block;
+
+  margin-bottom: 5px;
+
+  color: #475569;
+
+  font-size: 8px;
+}
+
+.dashboard-welcome h3 {
+  margin: 0;
+
+  color: #e2e8f0;
+
+  font-size: 17px;
+  line-height: 1.2;
+}
+
+.dashboard-welcome p {
+  margin: 5px 0 0;
+
+  color: #64748b;
+
+  font-size: 9px;
+}
+
+.dashboard-focus {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+
+  padding: 8px 12px;
+
+  border: 1px solid rgba(59, 130, 246, 0.12);
+  border-radius: 8px;
+
+  background: rgba(37, 99, 235, 0.05);
+}
+
+.dashboard-focus span {
+  color: #475569;
+  font-size: 8px;
+}
+
+.dashboard-focus strong {
+  margin-top: 2px;
+
+  color: #93c5fd;
+
+  font-size: 13px;
+}
+
+/* =========================================================
+   STAT CARDS
+========================================================= */
+
+.dashboard-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 9px;
+
+  margin-bottom: 11px;
+}
+
+.stat-card {
+  min-width: 0;
+
+  padding: 11px;
+
+  border: 1px solid rgba(99, 102, 241, 0.1);
+  border-radius: 10px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(15, 23, 42, 0.82),
+      rgba(8, 12, 27, 0.8)
+    );
+
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(139, 92, 246, 0.28);
+}
+
+.stat-card-top {
   display: flex;
   align-items: center;
   justify-content: space-between;
 
-  margin-bottom: 10px;
+  margin-bottom: 8px;
+
+  color: #64748b;
+
+  font-size: 8px;
 }
 
-.progress-header span {
-  color: #6b7280;
+.stat-card-top i {
+  font-style: normal;
+  color: #818cf8;
+  font-size: 13px;
+}
 
-  font-size: 10px;
+.stat-card strong {
+  display: block;
+
+  color: #f1f5f9;
+
+  font-size: 18px;
+  line-height: 1;
+}
+
+.stat-card small {
+  display: block;
+
+  margin-top: 4px;
+
+  color: #475569;
+
+  font-size: 7px;
+}
+
+.stat-card-green .stat-card-top i {
+  color: #4ade80;
+}
+
+.stat-card-green {
+  border-color: rgba(34, 197, 94, 0.1);
+}
+
+/* =========================================================
+   LOWER DASHBOARD GRID
+========================================================= */
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 10px;
+}
+
+.dashboard-card {
+  min-width: 0;
+
+  padding: 13px;
+
+  border: 1px solid rgba(99, 102, 241, 0.1);
+  border-radius: 11px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(15, 23, 42, 0.76),
+      rgba(5, 9, 21, 0.8)
+    );
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: 12px;
+}
+
+.card-header > div {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.card-label {
+  color: #cbd5e1;
+  font-size: 9px;
   font-weight: 600;
 }
 
-.progress-header strong {
-  color: #6366f1;
-
-  font-size: 11px;
+.card-header strong {
+  color: #475569;
+  font-size: 7px;
+  font-weight: 500;
 }
 
-.progress-bar {
-  width: 100%;
-  height: 7px;
+.card-header button {
+  padding: 5px 7px;
 
+  border: 1px solid rgba(148, 163, 184, 0.08);
+  border-radius: 5px;
+
+  color: #64748b;
+  background: rgba(15, 23, 42, 0.5);
+
+  font-size: 7px;
+
+  cursor: pointer;
+}
+
+.card-header button:hover {
+  color: #a78bfa;
+}
+
+/* =========================================================
+   CHART
+========================================================= */
+
+.chart-area {
+  position: relative;
+  height: 105px;
+}
+
+.chart-lines {
+  position: absolute;
+  inset: 0;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.chart-lines span {
+  width: 100%;
+  height: 1px;
+
+  background: rgba(148, 163, 184, 0.055);
+}
+
+.productivity-chart {
+  position: absolute;
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+}
+
+.chart-tooltip {
+  position: absolute;
+  top: 18px;
+  left: 57%;
+
+  padding: 4px 6px;
+
+  border-radius: 4px;
+
+  color: white;
+
+  background: #6366f1;
+
+  font-size: 7px;
+  font-weight: 700;
+
+  box-shadow:
+    0 4px 15px rgba(99, 102, 241, 0.35);
+}
+
+.chart-days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+
+  margin-top: 7px;
+
+  color: #475569;
+
+  font-size: 7px;
+  text-align: center;
+}
+
+/* =========================================================
+   TASKS
+========================================================= */
+
+.task-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.task-item {
+  min-width: 0;
+
+  display: grid;
+  grid-template-columns: 12px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 7px;
+
+  min-height: 35px;
+
+  border-bottom: 1px solid rgba(148, 163, 184, 0.055);
+}
+
+.task-item:last-child {
+  border-bottom: 0;
+}
+
+.task-check {
+  width: 9px;
+  height: 9px;
+
+  border: 1px solid #6366f1;
+  border-radius: 50%;
+}
+
+.task-name {
   overflow: hidden;
 
-  border-radius: 999px;
+  color: #94a3b8;
 
-  background: #e5e7eb;
+  font-size: 8px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
-.progress-fill {
-  width: 78%;
+.task-tag {
+  padding: 3px 5px;
+
+  border-radius: 4px;
+
+  font-size: 6px;
+  font-weight: 700;
+}
+
+.task-high {
+  color: #fda4af;
+  background: rgba(244, 63, 94, 0.1);
+}
+
+.task-medium {
+  color: #fcd34d;
+  background: rgba(234, 179, 8, 0.1);
+}
+
+.task-low {
+  color: #86efac;
+  background: rgba(34, 197, 94, 0.1);
+}
+
+/* =========================================================
+   FLOATING CARDS
+========================================================= */
+
+.floating-card {
+  position: absolute;
+  z-index: 8;
+
+  display: flex;
+  align-items: center;
+
+  border: 1px solid rgba(139, 92, 246, 0.2);
+  border-radius: 12px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(20, 22, 45, 0.9),
+      rgba(7, 10, 24, 0.94)
+    );
+
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+
+  box-shadow:
+    0 20px 45px rgba(0, 0, 0, 0.35),
+    0 0 25px rgba(124, 58, 237, 0.08);
+}
+
+/* Progress card */
+.floating-card-progress {
+  top: -5px;
+  right: -18px;
+
+  min-width: 165px;
+
+  padding: 11px 13px;
+
+  gap: 9px;
+
+  animation:
+    floatingProgress 6s ease-in-out infinite;
+}
+
+.floating-card-icon {
+  width: 29px;
+  height: 29px;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 8px;
+
+  color: #a78bfa;
+  background: rgba(124, 58, 237, 0.12);
+
+  font-size: 13px;
+}
+
+.floating-card-progress > div:nth-child(2) {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.floating-card-progress span {
+  color: #64748b;
+  font-size: 7px;
+}
+
+.floating-card-progress strong {
+  color: #e2e8f0;
+  font-size: 13px;
+}
+
+.mini-progress {
+  position: absolute;
+
+  left: 13px;
+  right: 13px;
+  bottom: 5px;
+
+  height: 2px;
+
+  border-radius: 10px;
+
+  background: rgba(148, 163, 184, 0.08);
+}
+
+.mini-progress span {
+  display: block;
+
+  width: 84%;
   height: 100%;
 
   border-radius: inherit;
 
   background: linear-gradient(
     90deg,
-    #6366f1,
-    #8b5cf6
+    #7c3aed,
+    #22d3ee
   );
 }
 
-/* ========================================
-   FLOATING CARDS
-   ======================================== */
+/* Task card */
+.floating-card-task {
+  left: -25px;
+  bottom: 25px;
 
-.floating-card {
-  position: absolute;
-  z-index: 5;
+  min-width: 190px;
 
+  padding: 11px 13px;
+
+  gap: 9px;
+
+  animation:
+    floatingTask 7s ease-in-out infinite;
+}
+
+.task-floating-icon {
+  width: 29px;
+  height: 29px;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 8px;
+
+  color: #86efac;
+  background: rgba(34, 197, 94, 0.1);
+
+  font-size: 12px;
+}
+
+.floating-card-task > div:nth-child(2) {
   display: flex;
-  align-items: center;
-  gap: 10px;
-
-  padding: 11px 14px;
-
-  border: 1px solid rgba(255, 255, 255, 0.9);
-  border-radius: 13px;
-
-  background: rgba(255, 255, 255, 0.9);
-
-  box-shadow:
-    0 15px 35px rgba(31, 41, 55, 0.1);
-
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
-
-  animation: floatingCard 4s ease-in-out infinite;
+  flex-direction: column;
+  gap: 2px;
 }
 
-.floating-card-top {
-  top: 75px;
-  right: -10px;
+.floating-card-task span {
+  color: #64748b;
+  font-size: 7px;
 }
 
-.floating-card-bottom {
-  bottom: 65px;
-  left: -15px;
-
-  animation-delay: -2s;
-}
-
-.floating-icon {
-  width: 32px;
-  height: 32px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  border-radius: 9px;
-
-  color: #ffffff;
-
-  font-size: 14px;
-
-  background: linear-gradient(
-    135deg,
-    #6366f1,
-    #8b5cf6
-  );
-}
-
-.floating-card strong {
-  display: block;
-
-  color: #374151;
-
-  font-size: 11px;
-  font-weight: 700;
-}
-
-.floating-card small {
-  display: block;
-
-  margin-top: 2px;
-
-  color: #9ca3af;
-
+.floating-card-task strong {
+  color: #cbd5e1;
   font-size: 9px;
 }
 
-/* ========================================
-   ANIMATION
-   ======================================== */
+.floating-check {
+  margin-left: auto;
 
-@keyframes floatingCard {
+  color: #4ade80;
+  font-size: 13px;
+}
+
+/* Productivity card */
+.floating-card-productivity {
+  right: -12px;
+  bottom: -15px;
+
+  padding: 10px 13px;
+
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1px;
+
+  animation:
+    floatingProductivity 6.5s ease-in-out infinite;
+}
+
+.floating-card-productivity span {
+  color: #64748b;
+  font-size: 7px;
+}
+
+.floating-card-productivity strong {
+  color: #22d3ee;
+  font-size: 17px;
+}
+
+.floating-card-productivity small {
+  color: #475569;
+  font-size: 7px;
+}
+
+/* =========================================================
+   BOTTOM FADE
+========================================================= */
+
+.hero-bottom-fade {
+  position: absolute;
+  z-index: 1;
+
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  height: 160px;
+
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    #03040b
+  );
+
+  pointer-events: none;
+}
+
+/* =========================================================
+   ANIMATIONS
+========================================================= */
+
+@keyframes titleGradient {
+  0% {
+    background-position: 0% center;
+  }
+
+  50% {
+    background-position: 100% center;
+  }
+
+  100% {
+    background-position: 0% center;
+  }
+}
+
+@keyframes dashboardFloat {
+  0%,
+  100% {
+    transform:
+      perspective(1600px)
+      rotateY(-2deg)
+      translateY(0);
+  }
+
+  50% {
+    transform:
+      perspective(1600px)
+      rotateY(-2deg)
+      translateY(-8px);
+  }
+}
+
+@keyframes floatingProgress {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  50% {
+    transform: translate3d(0, -8px, 0);
+  }
+}
+
+@keyframes floatingTask {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  50% {
+    transform: translate3d(0, 7px, 0);
+  }
+}
+
+@keyframes floatingProductivity {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  50% {
+    transform: translate3d(0, -7px, 0);
+  }
+}
+
+@keyframes badgeFloat {
   0%,
   100% {
     transform: translateY(0);
   }
 
   50% {
-    transform: translateY(-8px);
+    transform: translateY(-3px);
   }
 }
 
-/* ========================================
-   RESPONSIVE — TABLET
-   ======================================== */
+@keyframes badgeSpin {
+  0% {
+    transform: rotate(0deg);
+  }
 
-@media (max-width: 1000px) {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes glowFloatOne {
+  from {
+    transform: translate3d(-20px, -10px, 0);
+  }
+
+  to {
+    transform: translate3d(30px, 25px, 0);
+  }
+}
+
+@keyframes glowFloatTwo {
+  from {
+    transform: translate3d(20px, 15px, 0);
+  }
+
+  to {
+    transform: translate3d(-30px, -20px, 0);
+  }
+}
+
+@keyframes glowFloatThree {
+  from {
+    transform: translate3d(-10px, 20px, 0);
+  }
+
+  to {
+    transform: translate3d(25px, -15px, 0);
+  }
+}
+
+/* =========================================================
+   RESPONSIVE — LARGE TABLET
+========================================================= */
+
+@media (max-width: 1180px) {
   .hero {
-    padding: 75px 0 90px;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .hero-container {
+    grid-template-columns: minmax(350px, 0.8fr) minmax(500px, 1.2fr);
+    gap: 25px;
+  }
+
+  .hero-title {
+    font-size: clamp(48px, 5.5vw, 68px);
+  }
+
+  .dashboard-body {
+    grid-template-columns: 115px 1fr;
+  }
+
+  .dashboard-main {
+    padding: 15px;
+  }
+
+  .dashboard-topbar {
+    grid-template-columns: 120px minmax(150px, 1fr) 120px;
+    gap: 10px;
+  }
+
+  .floating-card-progress {
+    right: -5px;
+  }
+
+  .floating-card-task {
+    left: -10px;
+  }
+}
+
+/* =========================================================
+   RESPONSIVE — TABLET
+========================================================= */
+
+@media (max-width: 960px) {
+  .hero {
+    min-height: auto;
+    padding-top: 70px;
+    padding-bottom: 100px;
   }
 
   .hero-container {
     grid-template-columns: 1fr;
-
     gap: 70px;
   }
 
   .hero-content {
-    max-width: 700px;
+    max-width: 720px;
+    margin: 0 auto;
+
     text-align: center;
+  }
+
+  .hero-badge {
     margin: 0 auto;
   }
 
+  .hero-title {
+    align-items: center;
+    font-size: clamp(52px, 8vw, 76px);
+  }
+
   .hero-description {
-    margin-left: auto;
-    margin-right: auto;
+    margin: 0 auto;
   }
 
   .hero-actions {
     justify-content: center;
   }
 
-  .hero-stats {
+  .hero-social-proof {
     justify-content: center;
   }
 
   .hero-visual {
-    min-height: 500px;
+    width: min(800px, 100%);
+    margin: 0 auto;
+  }
+
+  .hero-planet {
+    right: -420px;
+    bottom: -420px;
   }
 }
 
-/* ========================================
+/* =========================================================
    RESPONSIVE — MOBILE
-   ======================================== */
+========================================================= */
 
 @media (max-width: 640px) {
   .hero {
-    min-height: auto;
-
-    padding: 55px 0 70px;
+    padding:
+      48px
+      16px
+      80px;
   }
 
   .hero-container {
-    width: min(92%, 500px);
-
     gap: 50px;
   }
 
   .hero-badge {
-    margin-bottom: 18px;
+    max-width: 100%;
+    padding: 8px 12px;
 
-    font-size: 11px;
+    font-size: 10px;
   }
 
   .hero-title {
-    font-size: clamp(42px, 12vw, 58px);
+    margin-top: 22px;
 
-    letter-spacing: -0.06em;
+    font-size: clamp(42px, 13vw, 60px);
+    line-height: 1;
   }
 
   .hero-description {
-    margin-top: 20px;
-
     font-size: 14px;
     line-height: 1.7;
   }
@@ -773,147 +1599,293 @@
     margin-top: 28px;
   }
 
-  .hero-btn {
+  .hero-button {
     width: 100%;
+    max-width: 290px;
   }
 
-  .hero-stats {
-    margin-top: 38px;
+  .hero-social-proof {
+    margin-top: 26px;
   }
 
-  .hero-stat strong {
-    font-size: 16px;
-  }
-
-  .hero-stat span {
-    font-size: 9px;
-  }
-
-  .hero-stat-divider {
-    margin: 0 15px;
+  .rating-text span {
+    max-width: 150px;
+    text-align: left;
   }
 
   .hero-visual {
-    min-height: 390px;
+    padding:
+      25px
+      0
+      55px;
   }
 
-  .hero-glow {
-    width: 320px;
-    height: 320px;
-  }
-
-  .orbit-one {
-    width: 340px;
-    height: 340px;
-  }
-
-  .orbit-two {
-    width: 270px;
-    height: 270px;
-  }
-
-  .workspace-card {
-    width: 94%;
-
-    border-radius: 18px;
+  .dashboard-preview {
+    border-radius: 16px;
 
     transform: none;
+
+    animation-name: dashboardFloatMobile;
   }
 
-  .workspace-card:hover {
-    transform: translateY(-3px);
+  .dashboard-topbar {
+    height: 48px;
+
+    grid-template-columns: auto 1fr auto;
+
+    padding: 0 10px;
   }
 
-  .workspace-content {
-    padding: 18px;
+  .dashboard-brand span {
+    display: none;
   }
 
-  .workspace-header {
-    padding: 15px;
+  .dashboard-logo {
+    width: 23px;
+    height: 23px;
   }
 
-  .workspace-heading h3 {
-    font-size: 18px;
-  }
-
-  .workspace-grid {
-    gap: 8px;
-  }
-
-  .mini-card {
-    min-height: 95px;
-
-    padding: 11px;
-
-    border-radius: 12px;
-  }
-
-  .mini-card span {
-    font-size: 10px;
-  }
-
-  .mini-card small {
+  .dashboard-search {
+    height: 29px;
     font-size: 8px;
   }
 
-  .floating-card {
-    padding: 8px 10px;
-
-    gap: 7px;
+  .dashboard-search kbd {
+    display: none;
   }
 
-  .floating-card-top {
-    top: 25px;
-    right: -3px;
+  .dashboard-actions {
+    gap: 3px;
   }
 
-  .floating-card-bottom {
-    bottom: 25px;
-    left: -3px;
+  .dashboard-actions button {
+    display: none;
   }
 
-  .floating-icon {
-    width: 27px;
-    height: 27px;
-
-    font-size: 11px;
+  .dashboard-avatar {
+    width: 24px;
+    height: 24px;
   }
 
-  .floating-card strong {
-    font-size: 9px;
+  .dashboard-body {
+    grid-template-columns: 72px 1fr;
+    min-height: 300px;
   }
 
-  .floating-card small {
+  .dashboard-sidebar {
+    padding: 12px 5px;
+  }
+
+  .sidebar-label {
+    display: none;
+  }
+
+  .sidebar-item {
+    justify-content: center;
+
+    padding: 0;
+
+    font-size: 0;
+  }
+
+  .sidebar-item span {
+    font-size: 12px;
+  }
+
+  .sidebar-growth,
+  .sidebar-system {
+    margin-top: 16px;
+  }
+
+  .dashboard-main {
+    padding: 12px;
+  }
+
+  .dashboard-welcome {
+    margin-bottom: 12px;
+  }
+
+  .dashboard-date {
     font-size: 7px;
+  }
+
+  .dashboard-welcome h3 {
+    font-size: 13px;
+  }
+
+  .dashboard-welcome p {
+    font-size: 7px;
+  }
+
+  .dashboard-focus {
+    display: none;
+  }
+
+  .dashboard-stats {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 6px;
+  }
+
+  .stat-card {
+    padding: 8px;
+  }
+
+  .stat-card strong {
+    font-size: 15px;
+  }
+
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .productivity-card {
+    display: block;
+  }
+
+  .tasks-card {
+    display: none;
+  }
+
+  .floating-card-progress {
+    top: -2px;
+    right: -5px;
+
+    min-width: 125px;
+
+    padding: 8px 10px;
+  }
+
+  .floating-card-progress .floating-card-icon {
+    width: 24px;
+    height: 24px;
+  }
+
+  .floating-card-task {
+    left: -4px;
+    bottom: 25px;
+
+    min-width: 150px;
+
+    padding: 8px 10px;
+  }
+
+  .floating-card-productivity {
+    right: -3px;
+    bottom: -14px;
+  }
+
+  .hero-orbit-one {
+    width: 550px;
+    height: 220px;
+    right: -350px;
+  }
+
+  .hero-orbit-two {
+    width: 450px;
+    height: 180px;
+    right: -300px;
+  }
+
+  .hero-planet {
+    width: 450px;
+    height: 450px;
+
+    right: -310px;
+    bottom: -320px;
   }
 }
 
-/* ========================================
+/* =========================================================
    SMALL MOBILE
-   ======================================== */
+========================================================= */
 
-@media (max-width: 400px) {
+@media (max-width: 420px) {
   .hero-title {
     font-size: 40px;
   }
 
-  .hero-stats {
-    transform: scale(0.9);
+  .hero-description {
+    font-size: 13px;
   }
 
-  .hero-stat-divider {
-    margin: 0 10px;
+  .hero-social-proof {
+    gap: 10px;
   }
 
-  .hero-visual {
-    min-height: 350px;
+  .hero-avatars .avatar {
+    width: 27px;
+    height: 27px;
   }
 
-  .workspace-content {
-    padding: 14px;
+  .rating-stars {
+    font-size: 11px;
   }
 
-  .workspace-grid {
-    grid-template-columns: 1fr 1fr;
+  .rating-text {
+    font-size: 9px;
+  }
+
+  .dashboard-body {
+    grid-template-columns: 55px 1fr;
+  }
+
+  .dashboard-main {
+    padding: 9px;
+  }
+
+  .dashboard-welcome h3 {
+    font-size: 11px;
+  }
+
+  .stat-card strong {
+    font-size: 13px;
+  }
+
+  .chart-area {
+    height: 85px;
+  }
+
+  .floating-card-progress {
+    transform: scale(0.88);
+    transform-origin: right top;
+  }
+
+  .floating-card-task {
+    transform: scale(0.88);
+    transform-origin: left bottom;
+  }
+
+  .floating-card-productivity {
+    transform: scale(0.88);
+    transform-origin: right bottom;
+  }
+}
+
+/* =========================================================
+   MOBILE DASHBOARD ANIMATION
+========================================================= */
+
+@keyframes dashboardFloatMobile {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .hero *,
+  .hero *::before,
+  .hero *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }
