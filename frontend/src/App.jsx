@@ -7,6 +7,7 @@ import Dashboard from './pages/Dashboard';
 import SpaceDetails from './pages/SpaceDetails';
 
 import './App.css';
+import './components/Hero.css';
 
 function App() {
   return (
