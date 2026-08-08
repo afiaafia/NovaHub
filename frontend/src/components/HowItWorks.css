@@ -1,39 +1,399 @@
+/* =========================================
+   HOW IT WORKS
+========================================= */
+
 .how-it-works {
-  padding: 6rem 2rem;
-  text-align: center;
-  background: #0f172a; /* dark background */
-  color: #fff;
+  position: relative;
+
+  width: 100%;
+
+  overflow: hidden;
+
+  padding: 120px 0;
+
+  background:
+    linear-gradient(
+      180deg,
+      #050713 0%,
+      #060814 100%
+    );
+
+  color: #ffffff;
 }
 
-.section-title {
-  font-size: 2.5rem;
-  margin-bottom: 3rem;
-  background: linear-gradient(90deg, #6366f1, #3b82f6);
+
+/* =========================================
+   BACKGROUND
+========================================= */
+
+.how-it-works::before {
+  content: "";
+
+  position: absolute;
+
+  width: 500px;
+  height: 500px;
+
+  left: 50%;
+  top: 35%;
+
+  transform: translate(-50%, -50%);
+
+  border-radius: 50%;
+
+  background:
+    rgba(99, 102, 241, 0.06);
+
+  filter: blur(120px);
+
+  pointer-events: none;
+}
+
+
+/* =========================================
+   TITLE
+========================================= */
+
+.how-it-works .section-title {
+  position: relative;
+
+  z-index: 1;
+
+  margin: 0 auto 60px;
+
+  text-align: center;
+
+  font-size: clamp(
+    38px,
+    5vw,
+    62px
+  );
+
+  font-weight: 700;
+
+  line-height: 1.05;
+
+  letter-spacing: -0.045em;
+
+  color: #ffffff;
+}
+
+
+.how-it-works .section-title::before {
+  content: "HOW IT WORKS";
+
+  display: block;
+
+  margin-bottom: 17px;
+
+  color: #a78bfa;
+
+  font-size: 9px;
+
+  font-weight: 700;
+
+  letter-spacing: 0.18em;
+}
+
+
+.how-it-works .section-title {
+  background:
+    linear-gradient(
+      100deg,
+      #ffffff 25%,
+      #c4b5fd 60%,
+      #60a5fa 100%
+    );
+
   -webkit-background-clip: text;
+  background-clip: text;
+
   -webkit-text-fill-color: transparent;
 }
 
+
+/* =========================================
+   STEPS
+========================================= */
+
 .steps {
-  display: flex;
-  justify-content: center;
-  gap: 2rem;
-  flex-wrap: wrap;
+  position: relative;
+
+  z-index: 1;
+
+  width: min(
+    1180px,
+    calc(100% - 48px)
+  );
+
+  margin: 0 auto;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, 1fr);
+
+  gap: 16px;
 }
+
+
+/* =========================================
+   STEP CARD
+========================================= */
 
 .step {
-  background: #1e293b;
-  padding: 2rem;
-  border-radius: 12px;
-  width: 280px;
-  transition: transform 0.3s ease;
+  position: relative;
+
+  min-height: 260px;
+
+  padding: 28px;
+
+  overflow: hidden;
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.07);
+
+  border-radius: 20px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.045),
+      rgba(255, 255, 255, 0.015)
+    );
+
+  transition:
+    transform 0.35s ease,
+    border-color 0.35s ease,
+    background 0.35s ease;
+
+  backdrop-filter: blur(12px);
+
+  -webkit-backdrop-filter: blur(12px);
 }
+
 
 .step:hover {
-  transform: translateY(-8px);
+  transform: translateY(-7px);
+
+  border-color:
+    rgba(139, 92, 246, 0.25);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(139, 92, 246, 0.08),
+      rgba(255, 255, 255, 0.02)
+    );
 }
 
+
+/* =========================================
+   STEP NUMBER
+========================================= */
+
+.step::before {
+  content: "";
+
+  position: absolute;
+
+  top: -70px;
+  right: -70px;
+
+  width: 160px;
+  height: 160px;
+
+  border-radius: 50%;
+
+  background:
+    rgba(124, 58, 237, 0.10);
+
+  filter: blur(25px);
+
+  transition:
+    transform 0.5s ease;
+}
+
+
+.step:hover::before {
+  transform:
+    scale(1.25);
+}
+
+
 .step-number {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: #6366f1;
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  width: 42px;
+  height: 42px;
+
+  margin-bottom: 50px;
+
+  border:
+    1px solid
+    rgba(139, 92, 246, 0.18);
+
+  border-radius: 12px;
+
+  background:
+    rgba(139, 92, 246, 0.07);
+
+  color: #a78bfa;
+
+  font-size: 11px;
+
+  font-weight: 700;
+
+  letter-spacing: 0.04em;
+}
+
+
+/* =========================================
+   STEP HEADING
+========================================= */
+
+.step h3 {
+  position: relative;
+
+  z-index: 1;
+
+  margin: 0 0 12px;
+
+  color:
+    rgba(255, 255, 255, 0.88);
+
+  font-size: 18px;
+
+  font-weight: 650;
+
+  letter-spacing: -0.025em;
+}
+
+
+/* =========================================
+   STEP DESCRIPTION
+========================================= */
+
+.step p {
+  position: relative;
+
+  z-index: 1;
+
+  max-width: 290px;
+
+  margin: 0;
+
+  color:
+    rgba(255, 255, 255, 0.34);
+
+  font-size: 11px;
+
+  line-height: 1.75;
+}
+
+
+/* =========================================
+   CONNECTING LINE
+========================================= */
+
+.steps::before {
+  content: "";
+
+  position: absolute;
+
+  top: 50%;
+
+  left: 10%;
+
+  right: 10%;
+
+  height: 1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(139, 92, 246, 0.25),
+      rgba(96, 165, 250, 0.25),
+      transparent
+    );
+
+  pointer-events: none;
+
+  z-index: -1;
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 850px) {
+
+  .how-it-works {
+    padding: 90px 0;
+  }
+
+  .steps {
+    grid-template-columns:
+      1fr;
+
+    max-width: 620px;
+  }
+
+  .steps::before {
+    display: none;
+  }
+
+  .step {
+    min-height: 220px;
+  }
+
+  .step-number {
+    margin-bottom: 35px;
+  }
+
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 620px) {
+
+  .how-it-works {
+    padding: 80px 0;
+  }
+
+  .how-it-works .section-title {
+    font-size: 39px;
+
+    margin-bottom: 42px;
+  }
+
+  .steps {
+    width: calc(100% - 32px);
+
+    gap: 12px;
+  }
+
+  .step {
+    min-height: 210px;
+
+    padding: 23px;
+  }
+
+  .step h3 {
+    font-size: 16px;
+  }
+
+  .step p {
+    font-size: 10px;
+  }
+
 }

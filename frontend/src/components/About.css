@@ -1,14 +1,788 @@
-import "./About.css";
+/* =========================================
+   ABOUT SECTION
+========================================= */
 
-export default function About() {
-  return (
-    <section id="about" className="section">
-      <h2 className="section-title">About NovaHub</h2>
-      <p>
-        NovaHub is your premium digital workspace. Our mission is to help
-        creators and teams organize tasks, track projects, set goals, and
-        analyze productivity in one seamless flow.
-      </p>
-    </section>
+.about-section {
+  position: relative;
+
+  width: 100%;
+
+  overflow: hidden;
+
+  padding: 120px 0;
+
+  background:
+    linear-gradient(
+      180deg,
+      #060814 0%,
+      #050713 100%
+    );
+}
+
+
+/* =========================================
+   BACKGROUND GLOW
+========================================= */
+
+.about-section::before {
+  content: "";
+
+  position: absolute;
+
+  width: 520px;
+  height: 520px;
+
+  left: -260px;
+  top: 20%;
+
+  border-radius: 50%;
+
+  background:
+    rgba(124, 58, 237, 0.09);
+
+  filter: blur(120px);
+
+  pointer-events: none;
+}
+
+.about-section::after {
+  content: "";
+
+  position: absolute;
+
+  width: 420px;
+  height: 420px;
+
+  right: -220px;
+  bottom: 5%;
+
+  border-radius: 50%;
+
+  background:
+    rgba(59, 130, 246, 0.07);
+
+  filter: blur(120px);
+
+  pointer-events: none;
+}
+
+
+/* =========================================
+   CONTAINER
+========================================= */
+
+.about-container {
+  position: relative;
+
+  z-index: 1;
+
+  width: min(
+    1180px,
+    calc(100% - 48px)
   );
+
+  margin: 0 auto;
+
+  display: grid;
+
+  grid-template-columns:
+    0.9fr 1.1fr;
+
+  gap: 90px;
+
+  align-items: center;
+}
+
+
+/* =========================================
+   CONTENT
+========================================= */
+
+.about-content {
+  max-width: 560px;
+}
+
+
+.about-badge {
+  display: inline-flex;
+
+  align-items: center;
+
+  padding: 7px 12px;
+
+  margin-bottom: 22px;
+
+  border:
+    1px solid
+    rgba(139, 92, 246, 0.18);
+
+  border-radius: 999px;
+
+  background:
+    rgba(139, 92, 246, 0.06);
+
+  color: #a78bfa;
+
+  font-size: 9px;
+
+  font-weight: 700;
+
+  letter-spacing: 0.16em;
+}
+
+
+.about-content h2 {
+  margin: 0;
+
+  color: #ffffff;
+
+  font-size: clamp(
+    38px,
+    4.5vw,
+    62px
+  );
+
+  font-weight: 700;
+
+  line-height: 1.04;
+
+  letter-spacing: -0.045em;
+}
+
+
+.about-content h2 span {
+  background:
+    linear-gradient(
+      100deg,
+      #c4b5fd,
+      #60a5fa
+    );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  -webkit-text-fill-color: transparent;
+}
+
+
+.about-description {
+  max-width: 520px;
+
+  margin: 28px 0 0;
+
+  color:
+    rgba(255, 255, 255, 0.48);
+
+  font-size: 14px;
+
+  line-height: 1.85;
+}
+
+
+.about-description.secondary {
+  margin-top: 14px;
+
+  color:
+    rgba(255, 255, 255, 0.30);
+}
+
+
+/* =========================================
+   STATS
+========================================= */
+
+.about-stats {
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap: 12px;
+
+  margin-top: 40px;
+}
+
+
+.about-stat {
+  min-width: 135px;
+
+  padding: 17px 18px;
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.07);
+
+  border-radius: 14px;
+
+  background:
+    rgba(255, 255, 255, 0.025);
+
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease,
+    background 0.3s ease;
+}
+
+
+.about-stat:hover {
+  transform: translateY(-4px);
+
+  border-color:
+    rgba(139, 92, 246, 0.25);
+
+  background:
+    rgba(139, 92, 246, 0.05);
+}
+
+
+.stat-number {
+  display: block;
+
+  margin-bottom: 5px;
+
+  color: #c4b5fd;
+
+  font-size: 18px;
+
+  font-weight: 700;
+}
+
+
+.stat-label {
+  display: block;
+
+  color:
+    rgba(255, 255, 255, 0.32);
+
+  font-size: 9px;
+
+  font-weight: 600;
+
+  letter-spacing: 0.03em;
+}
+
+
+/* =========================================
+   VISUAL AREA
+========================================= */
+
+.about-visual {
+  position: relative;
+
+  min-height: 520px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+}
+
+
+/* =========================================
+   MAIN CARD
+========================================= */
+
+.about-card {
+  position: relative;
+
+  width: min(
+    470px,
+    100%
+  );
+
+  padding: 28px;
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.08);
+
+  border-radius: 24px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.07),
+      rgba(255, 255, 255, 0.025)
+    );
+
+  box-shadow:
+    0 30px 80px
+    rgba(0, 0, 0, 0.35),
+
+    inset 0 1px 0
+    rgba(255, 255, 255, 0.04);
+
+  backdrop-filter: blur(20px);
+
+  -webkit-backdrop-filter: blur(20px);
+
+  z-index: 2;
+
+  animation:
+    aboutFloat 6s ease-in-out infinite;
+}
+
+
+/* =========================================
+   CARD TOP
+========================================= */
+
+.card-top {
+  display: flex;
+
+  align-items: center;
+
+  gap: 14px;
+
+  padding-bottom: 24px;
+
+  border-bottom:
+    1px solid
+    rgba(255, 255, 255, 0.06);
+}
+
+
+.card-icon {
+  width: 44px;
+  height: 44px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 13px;
+
+  color: #c4b5fd;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(139, 92, 246, 0.18),
+      rgba(59, 130, 246, 0.12)
+    );
+
+  border:
+    1px solid
+    rgba(139, 92, 246, 0.20);
+
+  font-size: 18px;
+}
+
+
+.card-label {
+  display: block;
+
+  margin-bottom: 5px;
+
+  color:
+    rgba(255, 255, 255, 0.25);
+
+  font-size: 8px;
+
+  font-weight: 700;
+
+  letter-spacing: 0.15em;
+}
+
+
+.card-top h3 {
+  margin: 0;
+
+  color:
+    rgba(255, 255, 255, 0.90);
+
+  font-size: 18px;
+
+  font-weight: 650;
+}
+
+
+/* =========================================
+   WORKSPACE PREVIEW
+========================================= */
+
+.workspace-preview {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 10px;
+
+  padding: 24px 0;
+}
+
+
+.preview-item {
+  display: flex;
+
+  align-items: center;
+
+  gap: 13px;
+
+  padding: 13px 14px;
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.05);
+
+  border-radius: 13px;
+
+  background:
+    rgba(255, 255, 255, 0.025);
+
+  transition:
+    transform 0.3s ease,
+    background 0.3s ease,
+    border-color 0.3s ease;
+}
+
+
+.preview-item:hover {
+  transform: translateX(5px);
+
+  background:
+    rgba(139, 92, 246, 0.06);
+
+  border-color:
+    rgba(139, 92, 246, 0.16);
+}
+
+
+.preview-icon {
+  width: 34px;
+  height: 34px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 10px;
+
+  background:
+    rgba(139, 92, 246, 0.08);
+
+  font-size: 15px;
+}
+
+
+.preview-item strong {
+  display: block;
+
+  margin-bottom: 3px;
+
+  color:
+    rgba(255, 255, 255, 0.75);
+
+  font-size: 11px;
+}
+
+
+.preview-item small {
+  display: block;
+
+  color:
+    rgba(255, 255, 255, 0.27);
+
+  font-size: 9px;
+}
+
+
+/* =========================================
+   CARD FOOTER
+========================================= */
+
+.card-footer {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  padding-top: 18px;
+
+  border-top:
+    1px solid
+    rgba(255, 255, 255, 0.06);
+
+  color:
+    rgba(255, 255, 255, 0.27);
+
+  font-size: 9px;
+}
+
+
+.footer-arrow {
+  color: #a78bfa;
+
+  font-size: 16px;
+
+  transition:
+    transform 0.3s ease;
+}
+
+
+.about-card:hover .footer-arrow {
+  transform: translateX(4px);
+}
+
+
+/* =========================================
+   FLOATING CARDS
+========================================= */
+
+.floating-card {
+  position: absolute;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 11px;
+
+  padding: 13px 16px;
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.08);
+
+  border-radius: 14px;
+
+  background:
+    rgba(10, 12, 25, 0.78);
+
+  backdrop-filter: blur(18px);
+
+  -webkit-backdrop-filter: blur(18px);
+
+  box-shadow:
+    0 20px 50px
+    rgba(0, 0, 0, 0.28);
+
+  z-index: 3;
+}
+
+
+.floating-card > span {
+  width: 30px;
+  height: 30px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 9px;
+
+  background:
+    rgba(139, 92, 246, 0.10);
+
+  color: #a78bfa;
+
+  font-size: 13px;
+}
+
+
+.floating-card strong {
+  display: block;
+
+  color:
+    rgba(255, 255, 255, 0.72);
+
+  font-size: 10px;
+
+  margin-bottom: 3px;
+}
+
+
+.floating-card small {
+  display: block;
+
+  color:
+    rgba(255, 255, 255, 0.25);
+
+  font-size: 8px;
+}
+
+
+.floating-card-one {
+  top: 58px;
+
+  left: 0;
+
+  animation:
+    floatingOne 5s ease-in-out infinite;
+}
+
+
+.floating-card-two {
+  right: -5px;
+
+  bottom: 58px;
+
+  animation:
+    floatingTwo 5.5s ease-in-out infinite;
+}
+
+
+/* =========================================
+   ANIMATIONS
+========================================= */
+
+@keyframes aboutFloat {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+
+}
+
+
+@keyframes floatingOne {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+
+}
+
+
+@keyframes floatingTwo {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(9px);
+  }
+
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 950px) {
+
+  .about-container {
+    grid-template-columns: 1fr;
+
+    gap: 70px;
+  }
+
+  .about-content {
+    max-width: 700px;
+
+    margin: 0 auto;
+
+    text-align: center;
+  }
+
+  .about-description {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .about-stats {
+    justify-content: center;
+  }
+
+  .about-visual {
+    min-height: 470px;
+  }
+
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 620px) {
+
+  .about-section {
+    padding: 80px 0;
+  }
+
+  .about-container {
+    width: calc(100% - 32px);
+
+    gap: 48px;
+  }
+
+  .about-content h2 {
+    font-size: 39px;
+  }
+
+  .about-description {
+    font-size: 12px;
+
+    line-height: 1.8;
+  }
+
+  .about-stats {
+    display: grid;
+
+    grid-template-columns:
+      repeat(3, 1fr);
+
+    gap: 8px;
+
+    margin-top: 30px;
+  }
+
+  .about-stat {
+    min-width: 0;
+
+    padding: 13px 8px;
+  }
+
+  .stat-number {
+    font-size: 15px;
+  }
+
+  .stat-label {
+    font-size: 7px;
+  }
+
+  .about-visual {
+    min-height: 390px;
+  }
+
+  .about-card {
+    padding: 20px;
+
+    border-radius: 20px;
+  }
+
+  .floating-card {
+    padding: 10px 12px;
+  }
+
+  .floating-card-one {
+    top: 20px;
+
+    left: -4px;
+  }
+
+  .floating-card-two {
+    right: -4px;
+
+    bottom: 20px;
+  }
+
 }

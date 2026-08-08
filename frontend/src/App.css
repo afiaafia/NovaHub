@@ -1,41 +1,76 @@
-import { Routes, Route } from 'react-router-dom';
+/* =========================================
+   NOVAHUB APP
+   Global Application Styles
+========================================= */
 
-import MainLayout from './layouts/MainLayout';
-
-import Home from './pages/Home';
-import Dashboard from './pages/Dashboard';
-import SpaceDetails from './pages/SpaceDetails';
-
-import './App.css';
-
-function App() {
-  return (
-    <Routes>
-
-      <Route element={<MainLayout />}>
-
-        {/* Home */}
-        <Route
-          path="/"
-          element={<Home />}
-        />
-
-        {/* Dashboard */}
-        <Route
-          path="/dashboard"
-          element={<Dashboard />}
-        />
-
-        {/* Space Details */}
-        <Route
-          path="/spaces/:id"
-          element={<SpaceDetails />}
-        />
-
-      </Route>
-
-    </Routes>
-  );
+#root {
+  width: 100%;
+  min-height: 100vh;
 }
 
-export default App;
+.app {
+  width: 100%;
+  min-height: 100vh;
+}
+
+.home-page {
+  width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+
+/* =========================================
+   GLOBAL SECTION HELPERS
+========================================= */
+
+.section {
+  position: relative;
+  width: 100%;
+}
+
+.section-container {
+  width: min(1180px, calc(100% - 48px));
+  margin: 0 auto;
+}
+
+
+/* =========================================
+   GLOBAL BUTTON RESET
+========================================= */
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+
+/* =========================================
+   ACCESSIBILITY
+========================================= */
+
+:focus-visible {
+  outline: 2px solid rgba(139, 92, 246, 0.8);
+  outline-offset: 4px;
+}
+
+
+/* =========================================
+   SELECTION
+========================================= */
+
+::selection {
+  background: rgba(139, 92, 246, 0.3);
+  color: #ffffff;
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 768px) {
+  .section-container {
+    width: calc(100% - 32px);
+  }
+}
