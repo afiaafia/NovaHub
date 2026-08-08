@@ -13,8 +13,13 @@ function App() {
   return (
     <Routes>
       <Route element={<MainLayout />}>
+        {/* Home */}
         <Route path="/" element={<Home />} />
+
+        {/* Dashboard */}
         <Route path="/dashboard" element={<Dashboard />} />
+
+        {/* Space Details */}
         <Route path="/spaces/:id" element={<SpaceDetails />} />
       </Route>
     </Routes>

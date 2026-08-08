@@ -4,82 +4,107 @@ import Hero from '../components/Hero';
 const Home = () => {
   return (
     <div className="home-page">
-      {/* =========================
-          Hero
-      ========================== */}
+      {/* =================================
+          HERO SECTION
+      ================================== */}
       <Hero />
 
-      {/* =========================
-          Features
-      ========================== */}
+      {/* =================================
+          FEATURES SECTION
+      ================================== */}
       <section className="features" id="features">
         <div className="container">
           <div className="section-heading">
-            <span>WHY NOVAHUB</span>
+            <span className="section-badge">WHY NOVAHUB</span>
 
             <h2>
-              Everything organized.
+              Everything you need.
               <br />
-              Nothing complicated.
+              <span>One powerful space.</span>
             </h2>
 
             <p>
-              Keep your digital world structured and accessible from one
-              workspace.
+              Organize your projects, learning, ideas, and progress inside one
+              beautifully connected workspace.
             </p>
           </div>
 
           <div className="feature-grid">
+            {/* Feature 01 */}
             <article className="feature-card">
-              <div className="feature-icon">🗂️</div>
+              <div className="feature-icon">⚡</div>
 
-              <h3>Organize</h3>
+              <span className="feature-number">01</span>
+
+              <h3>Smart Workspaces</h3>
 
               <p>
-                Create dedicated spaces for different areas of your work and
-                learning.
+                Create dedicated spaces for your projects, learning,
+                productivity, and personal goals.
               </p>
             </article>
 
+            {/* Feature 02 */}
             <article className="feature-card">
-              <div className="feature-icon">⚡</div>
+              <div className="feature-icon">📊</div>
+
+              <span className="feature-number">02</span>
+
+              <h3>Track Your Progress</h3>
+
+              <p>
+                Keep an eye on your progress and understand how your work is
+                evolving over time.
+              </p>
+            </article>
+
+            {/* Feature 03 */}
+            <article className="feature-card">
+              <div className="feature-icon">🧠</div>
+
+              <span className="feature-number">03</span>
 
               <h3>Stay Focused</h3>
 
               <p>
-                Keep everything important in one place without unnecessary
-                complexity.
-              </p>
-            </article>
-
-            <article className="feature-card">
-              <div className="feature-icon">🚀</div>
-
-              <h3>Keep Growing</h3>
-
-              <p>
-                Build your workspace around the things you want to learn and
-                create.
+                Keep your tasks, ideas, resources, and goals connected without
+                unnecessary complexity.
               </p>
             </article>
           </div>
         </div>
       </section>
 
-      {/* =========================
-          CTA
-      ========================== */}
+      {/* =================================
+          CTA SECTION
+      ================================== */}
       <section className="cta-section">
-        <div className="container cta-card">
-          <div>
-            <span>READY TO ORGANIZE?</span>
+        <div className="container">
+          <div className="cta-card">
+            <div className="cta-content">
+              <span className="section-badge">START YOUR JOURNEY</span>
 
-            <h2>Build your own digital workspace.</h2>
+              <h2>
+                Build your own
+                <span> digital space.</span>
+              </h2>
+
+              <p>
+                Bring your ideas, projects, and progress together with NovaHub.
+              </p>
+            </div>
+
+            <div className="cta-actions">
+              <Link to="/dashboard" className="cta-primary">
+                Get Started
+                <span>→</span>
+              </Link>
+
+              <Link to="/dashboard" className="cta-secondary">
+                Explore NovaHub
+              </Link>
+            </div>
           </div>
-
-          <Link to="/dashboard" className="primary-button">
-            Get Started →
-          </Link>
         </div>
       </section>
     </div>
