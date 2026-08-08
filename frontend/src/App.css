@@ -1,139 +1,41 @@
-/* ========== Global Reset ========== */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+import { Routes, Route } from 'react-router-dom';
+
+import MainLayout from './layouts/MainLayout';
+
+import Home from './pages/Home';
+import Dashboard from './pages/Dashboard';
+import SpaceDetails from './pages/SpaceDetails';
+
+import './App.css';
+
+function App() {
+  return (
+    <Routes>
+
+      <Route element={<MainLayout />}>
+
+        {/* Home */}
+        <Route
+          path="/"
+          element={<Home />}
+        />
+
+        {/* Dashboard */}
+        <Route
+          path="/dashboard"
+          element={<Dashboard />}
+        />
+
+        {/* Space Details */}
+        <Route
+          path="/spaces/:id"
+          element={<SpaceDetails />}
+        />
+
+      </Route>
+
+    </Routes>
+  );
 }
 
-/* ========== Base Styles ========== */
-body {
-  font-family: "Inter", system-ui, sans-serif;
-  background-color: #0f172a; /* dark background */
-  color: #fff;
-  line-height: 1.6;
-}
-
-a {
-  text-decoration: none;
-  color: inherit;
-}
-
-button {
-  cursor: pointer;
-  border: none;
-  outline: none;
-  font-family: inherit;
-}
-
-/* ========== Layout Utilities ========== */
-main {
-  min-height: 80vh;
-  display: flex;
-  flex-direction: column;
-}
-
-/* Section wrapper (common for all sections) */
-.section {
-  padding: 6rem 2rem;
-  text-align: center;
-}
-
-/* Section title gradient */
-.section-title {
-  font-size: 2.5rem;
-  margin-bottom: 2rem;
-  background: linear-gradient(90deg, #6366f1, #3b82f6);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-/* ========== Reusable Components ========== */
-
-/* Cards (Pricing, Blog, FeaturesPreview etc.) */
-.card {
-  background: #1e293b;
-  padding: 2rem;
-  border-radius: 12px;
-  transition: transform 0.3s ease;
-}
-
-.card:hover {
-  transform: translateY(-8px);
-}
-
-.card.featured {
-  border: 2px solid #6366f1;
-  background: linear-gradient(180deg, #1e293b, #111827);
-}
-
-/* Buttons */
-.btn {
-  display: inline-block;
-  padding: 0.75rem 1.5rem;
-  border-radius: 8px;
-  font-weight: 600;
-  transition: background 0.3s ease;
-}
-
-.btn-primary {
-  background: #6366f1;
-  color: #fff;
-}
-
-.btn-primary:hover {
-  background: #4f46e5;
-}
-
-.btn-secondary {
-  background: #1e293b;
-  color: #fff;
-}
-
-.btn-secondary:hover {
-  background: #334155;
-}
-
-/* Forms (Contact section) */
-.contact-form {
-  max-width: 500px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.contact-form input,
-.contact-form textarea {
-  padding: 1rem;
-  border-radius: 8px;
-  border: 1px solid #334155;
-  background: #1e293b;
-  color: #fff;
-}
-
-.contact-form button {
-  background: #6366f1;
-  color: #fff;
-  padding: 1rem;
-  border-radius: 8px;
-  font-weight: bold;
-}
-
-.contact-form button:hover {
-  background: #4f46e5;
-}
-
-/* ========== Responsive Utilities ========== */
-@media (max-width: 768px) {
-  .section {
-    padding: 4rem 1.5rem;
-  }
-
-  .section-title {
-    font-size: 2rem;
-  }
-
-  .card {
-    width: 100%;
-  }
-}
+export default App;
