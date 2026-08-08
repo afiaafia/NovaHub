@@ -1,5 +1,8 @@
 import { Link } from 'react-router-dom';
+
 import Hero from '../components/Hero';
+import TrustedBy from '../components/TrustedBy';
+import FeaturesPreview from '../components/FeaturesPreview';
 
 const Home = () => {
   return (
@@ -10,70 +13,14 @@ const Home = () => {
       <Hero />
 
       {/* =================================
-          FEATURES SECTION
+          TRUSTED BY
       ================================== */}
-      <section className="features" id="features">
-        <div className="container">
-          <div className="section-heading">
-            <span className="section-badge">WHY NOVAHUB</span>
+      <TrustedBy />
 
-            <h2>
-              Everything you need.
-              <br />
-              <span>One powerful space.</span>
-            </h2>
-
-            <p>
-              Organize your projects, learning, ideas, and progress inside one
-              beautifully connected workspace.
-            </p>
-          </div>
-
-          <div className="feature-grid">
-            {/* Feature 01 */}
-            <article className="feature-card">
-              <div className="feature-icon">⚡</div>
-
-              <span className="feature-number">01</span>
-
-              <h3>Smart Workspaces</h3>
-
-              <p>
-                Create dedicated spaces for your projects, learning,
-                productivity, and personal goals.
-              </p>
-            </article>
-
-            {/* Feature 02 */}
-            <article className="feature-card">
-              <div className="feature-icon">📊</div>
-
-              <span className="feature-number">02</span>
-
-              <h3>Track Your Progress</h3>
-
-              <p>
-                Keep an eye on your progress and understand how your work is
-                evolving over time.
-              </p>
-            </article>
-
-            {/* Feature 03 */}
-            <article className="feature-card">
-              <div className="feature-icon">🧠</div>
-
-              <span className="feature-number">03</span>
-
-              <h3>Stay Focused</h3>
-
-              <p>
-                Keep your tasks, ideas, resources, and goals connected without
-                unnecessary complexity.
-              </p>
-            </article>
-          </div>
-        </div>
-      </section>
+      {/* =================================
+          FEATURES PREVIEW
+      ================================== */}
+      <FeaturesPreview />
 
       {/* =================================
           CTA SECTION

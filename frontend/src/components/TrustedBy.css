@@ -1,0 +1,409 @@
+/* =========================================================
+   NOVAHUB — TRUSTED BY
+========================================================= */
+
+.trusted-section {
+  position: relative;
+  width: 100%;
+  padding: 30px 0 46px;
+  overflow: hidden;
+}
+
+
+/* =========================================================
+   BACKGROUND GLOW
+========================================================= */
+
+.trusted-section::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+
+  width: 620px;
+  height: 150px;
+
+  transform: translateX(-50%);
+
+  background: radial-gradient(
+    ellipse,
+    rgba(92, 45, 180, 0.10) 0%,
+    rgba(37, 99, 235, 0.04) 38%,
+    transparent 72%
+  );
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   CONTAINER
+========================================================= */
+
+.trusted-container {
+  position: relative;
+
+  width: min(1080px, calc(100% - 48px));
+
+  margin: 0 auto;
+}
+
+
+/* =========================================================
+   HEADING
+========================================================= */
+
+.trusted-heading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 18px;
+
+  margin-bottom: 26px;
+}
+
+.trusted-heading p {
+  margin: 0;
+
+  color: rgba(255, 255, 255, 0.48);
+
+  font-size: 11px;
+  font-weight: 500;
+
+  letter-spacing: 0.02em;
+
+  white-space: nowrap;
+}
+
+.trusted-line {
+  width: 42px;
+  height: 1px;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.12)
+  );
+}
+
+.trusted-line:last-child {
+  transform: rotate(180deg);
+}
+
+
+/* =========================================================
+   LOGOS
+========================================================= */
+
+.trusted-logos {
+  display: grid;
+
+  grid-template-columns: repeat(6, 1fr);
+
+  align-items: center;
+
+  gap: 22px;
+}
+
+
+/* =========================================================
+   COMPANY
+========================================================= */
+
+.trusted-company {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 9px;
+
+  min-height: 46px;
+
+  color: rgba(255, 255, 255, 0.38);
+
+  cursor: default;
+
+  transition:
+    color 0.35s ease,
+    transform 0.35s ease,
+    filter 0.35s ease;
+}
+
+
+/* =========================================================
+   ICON
+========================================================= */
+
+.trusted-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 25px;
+  height: 25px;
+
+  flex-shrink: 0;
+}
+
+.trusted-icon svg {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+}
+
+
+/* =========================================================
+   NAME
+========================================================= */
+
+.trusted-name {
+  font-size: 18px;
+  font-weight: 600;
+
+  line-height: 1;
+
+  letter-spacing: -0.025em;
+
+  white-space: nowrap;
+}
+
+
+/* Individual wordmark adjustments */
+
+.trusted-google .trusted-name {
+  font-weight: 500;
+  letter-spacing: -0.04em;
+}
+
+.trusted-microsoft .trusted-name {
+  font-weight: 500;
+  letter-spacing: -0.035em;
+}
+
+.trusted-github .trusted-name {
+  font-weight: 600;
+}
+
+.trusted-spotify .trusted-name {
+  font-size: 17px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+.trusted-notion .trusted-name {
+  font-weight: 600;
+}
+
+.trusted-vercel .trusted-name {
+  font-weight: 500;
+}
+
+
+/* =========================================================
+   HOVER
+========================================================= */
+
+.trusted-company:hover {
+  color: rgba(255, 255, 255, 0.84);
+
+  transform: translateY(-3px);
+
+  filter:
+    drop-shadow(0 0 12px rgba(124, 58, 237, 0.18));
+}
+
+.trusted-company::after {
+  content: "";
+
+  position: absolute;
+
+  left: 50%;
+  bottom: 0;
+
+  width: 0;
+  height: 1px;
+
+  transform: translateX(-50%);
+
+  background: linear-gradient(
+    90deg,
+    #7c3aed,
+    #2563eb
+  );
+
+  opacity: 0;
+
+  transition:
+    width 0.35s ease,
+    opacity 0.35s ease;
+}
+
+.trusted-company:hover::after {
+  width: 45px;
+  opacity: 0.8;
+}
+
+
+/* =========================================================
+   SUBTLE IDLE MOTION
+========================================================= */
+
+.trusted-company:nth-child(1) {
+  animation: trustedFloat 5.2s ease-in-out infinite;
+}
+
+.trusted-company:nth-child(2) {
+  animation: trustedFloat 5.8s ease-in-out 0.3s infinite;
+}
+
+.trusted-company:nth-child(3) {
+  animation: trustedFloat 5.4s ease-in-out 0.6s infinite;
+}
+
+.trusted-company:nth-child(4) {
+  animation: trustedFloat 6s ease-in-out 0.9s infinite;
+}
+
+.trusted-company:nth-child(5) {
+  animation: trustedFloat 5.6s ease-in-out 1.2s infinite;
+}
+
+.trusted-company:nth-child(6) {
+  animation: trustedFloat 6.2s ease-in-out 1.5s infinite;
+}
+
+@keyframes trustedFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-2px);
+  }
+}
+
+
+/* =========================================================
+   RESPONSIVE — TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+  .trusted-logos {
+    grid-template-columns: repeat(3, 1fr);
+
+    row-gap: 16px;
+  }
+
+  .trusted-section {
+    padding-top: 24px;
+    padding-bottom: 38px;
+  }
+}
+
+
+/* =========================================================
+   RESPONSIVE — MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+  .trusted-container {
+    width: min(100% - 32px, 480px);
+  }
+
+  .trusted-heading {
+    gap: 10px;
+    margin-bottom: 22px;
+  }
+
+  .trusted-heading p {
+    font-size: 10px;
+    text-align: center;
+  }
+
+  .trusted-line {
+    width: 24px;
+  }
+
+  .trusted-logos {
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 10px;
+  }
+
+  .trusted-company {
+    min-height: 48px;
+
+    border: 1px solid rgba(255, 255, 255, 0.045);
+    border-radius: 12px;
+
+    background: rgba(255, 255, 255, 0.018);
+
+    backdrop-filter: blur(10px);
+  }
+
+  .trusted-company:hover {
+    transform: translateY(-2px);
+  }
+
+  .trusted-name {
+    font-size: 15px;
+  }
+
+  .trusted-icon {
+    width: 21px;
+    height: 21px;
+  }
+
+  .trusted-spotify .trusted-name {
+    font-size: 14px;
+  }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 380px) {
+  .trusted-container {
+    width: calc(100% - 24px);
+  }
+
+  .trusted-heading {
+    gap: 7px;
+  }
+
+  .trusted-heading p {
+    font-size: 9px;
+  }
+
+  .trusted-line {
+    width: 16px;
+  }
+
+  .trusted-company {
+    gap: 7px;
+  }
+
+  .trusted-name {
+    font-size: 13px;
+  }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .trusted-company {
+    animation: none !important;
+
+    transition: none;
+  }
+}
