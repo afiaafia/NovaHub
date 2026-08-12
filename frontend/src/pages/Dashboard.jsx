@@ -1,22 +1,31 @@
 import { useEffect, useState } from 'react';
-import { getSpaces, createSpace } from '../services/spaceService';
+import { getSpaces, createSpace, deleteSpace } from '../services/spaceService';
+
 import './Dashboard.css';
+
+const DEFAULT_FORM = {
+  name: '',
+  description: '',
+  icon: '🚀',
+  color: '#6366f1',
+};
 
 const Dashboard = () => {
   const [spaces, setSpaces] = useState([]);
+
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
 
   const [showCreateModal, setShowCreateModal] = useState(false);
   const [creating, setCreating] = useState(false);
-  const [formError, setFormError] = useState('');
+  const [deletingId, setDeletingId] = useState(null);
 
-  const [formData, setFormData] = useState({
-    name: '',
-    description: '',
-    icon: '🚀',
-    color: '#6366f1',
-  });
+  const [formError, setFormError] = useState('');
+  const [formData, setFormData] = useState(DEFAULT_FORM);
+
+  // ================================
+  // LOAD SPACES
+  // ================================
 
   const loadSpaces = async () => {
     try {
@@ -25,10 +34,19 @@ const Dashboard = () => {
 
       const response = await getSpaces();
 
-      setSpaces(response.data || []);
+      /*
+        Backend response:
+        {
+          success: true,
+          data: [...]
+        }
+      */
+
+      setSpaces(Array.isArray(response?.data) ? response.data : []);
     } catch (err) {
       console.error('Failed to load spaces:', err);
-      setError('Unable to load your spaces. Please try again.');
+
+      setError(err?.message || 'Unable to load your spaces. Please try again.');
     } finally {
       setLoading(false);
     }
@@ -38,8 +56,13 @@ const Dashboard = () => {
     loadSpaces();
   }, []);
 
+  // ================================
+  // MODAL
+  // ================================
+
   const openCreateModal = () => {
     setFormError('');
+    setFormData(DEFAULT_FORM);
     setShowCreateModal(true);
   };
 
@@ -48,14 +71,12 @@ const Dashboard = () => {
 
     setShowCreateModal(false);
     setFormError('');
-
-    setFormData({
-      name: '',
-      description: '',
-      icon: '🚀',
-      color: '#6366f1',
-    });
+    setFormData(DEFAULT_FORM);
   };
+
+  // ================================
+  // FORM INPUT
+  // ================================
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -70,10 +91,18 @@ const Dashboard = () => {
     }
   };
 
+  // ================================
+  // CREATE SPACE
+  // ================================
+
   const handleCreateSpace = async (event) => {
     event.preventDefault();
 
-    if (!formData.name.trim()) {
+    const name = formData.name.trim();
+    const description = formData.description.trim();
+    const icon = formData.icon.trim() || '🚀';
+
+    if (!name) {
       setFormError('Space name is required.');
       return;
     }
@@ -83,45 +112,72 @@ const Dashboard = () => {
       setFormError('');
 
       await createSpace({
-        name: formData.name.trim(),
-        description: formData.description.trim(),
-        icon: formData.icon.trim() || '🚀',
+        name,
+        description,
+        icon,
         color: formData.color,
       });
 
       await loadSpaces();
 
-      setFormData({
-        name: '',
-        description: '',
-        icon: '🚀',
-        color: '#6366f1',
-      });
-
       setShowCreateModal(false);
+      setFormData(DEFAULT_FORM);
     } catch (err) {
       console.error('Failed to create space:', err);
 
-      setFormError(
-        err?.response?.data?.message ||
-          'Unable to create space. Please try again.'
-      );
+      setFormError(err?.message || 'Unable to create space. Please try again.');
     } finally {
       setCreating(false);
     }
   };
 
+  // ================================
+  // DELETE SPACE
+  // ================================
+
+  const handleDeleteSpace = async (id) => {
+    if (!id) return;
+
+    const confirmed = window.confirm(
+      'Are you sure you want to delete this space?'
+    );
+
+    if (!confirmed) return;
+
+    try {
+      setDeletingId(id);
+
+      await deleteSpace(id);
+
+      setSpaces((previous) => previous.filter((space) => space._id !== id));
+    } catch (err) {
+      console.error('Failed to delete space:', err);
+
+      setError(err?.message || 'Unable to delete the space. Please try again.');
+    } finally {
+      setDeletingId(null);
+    }
+  };
+
+  // ================================
+  // RENDER
+  // ================================
+
   return (
     <section className="dashboard-page">
       <div className="dashboard-container">
-        {/* Header */}
+        {/* ================= HEADER ================= */}
+
         <div className="dashboard-header">
           <div>
             <span className="dashboard-eyebrow">WORKSPACE</span>
 
             <h1>Your Spaces</h1>
 
-            <p>Organize your work, learning, and projects.</p>
+            <p>
+              Organize your work, learning, and projects in one focused
+              workspace.
+            </p>
           </div>
 
           <button
@@ -133,16 +189,18 @@ const Dashboard = () => {
           </button>
         </div>
 
-        {/* Loading */}
+        {/* ================= LOADING ================= */}
+
         {loading && (
           <div className="dashboard-state">
-            <div className="loading-spinner"></div>
+            <div className="loading-spinner" />
 
             <p>Loading your spaces...</p>
           </div>
         )}
 
-        {/* Error */}
+        {/* ================= ERROR ================= */}
+
         {!loading && error && (
           <div className="dashboard-state error-state">
             <div className="state-icon">!</div>
@@ -161,14 +219,17 @@ const Dashboard = () => {
           </div>
         )}
 
-        {/* Empty */}
+        {/* ================= EMPTY ================= */}
+
         {!loading && !error && spaces.length === 0 && (
           <div className="dashboard-state empty-state">
             <div className="state-icon">+</div>
 
             <h3>No spaces yet</h3>
 
-            <p>Create your first space to start organizing your work.</p>
+            <p>
+              Create your first space to start organizing your work and ideas.
+            </p>
 
             <button
               className="dashboard-primary-button"
@@ -180,7 +241,8 @@ const Dashboard = () => {
           </div>
         )}
 
-        {/* Spaces */}
+        {/* ================= SPACES ================= */}
+
         {!loading && !error && spaces.length > 0 && (
           <div className="space-grid">
             {spaces.map((space) => (
@@ -198,9 +260,11 @@ const Dashboard = () => {
                   <button
                     className="menu-button"
                     type="button"
-                    aria-label={`Options for ${space.name}`}
+                    aria-label={`Delete ${space.name}`}
+                    onClick={() => handleDeleteSpace(space._id)}
+                    disabled={deletingId === space._id}
                   >
-                    ⋯
+                    {deletingId === space._id ? '...' : '⋯'}
                   </button>
                 </div>
 
@@ -216,7 +280,8 @@ const Dashboard = () => {
               </article>
             ))}
 
-            {/* Create new space card */}
+            {/* CREATE CARD */}
+
             <button
               className="create-card"
               type="button"
@@ -231,14 +296,14 @@ const Dashboard = () => {
           </div>
         )}
 
-        {/* Create Space Modal */}
+        {/* ================= CREATE MODAL ================= */}
+
         {showCreateModal && (
           <div className="modal-overlay" onClick={closeCreateModal}>
             <div
               className="create-modal"
               onClick={(event) => event.stopPropagation()}
             >
-              {/* Modal Header */}
               <div className="modal-header">
                 <div>
                   <span className="dashboard-eyebrow">NEW SPACE</span>
@@ -262,9 +327,9 @@ const Dashboard = () => {
                 </button>
               </div>
 
-              {/* Form */}
               <form onSubmit={handleCreateSpace}>
-                {/* Name */}
+                {/* NAME */}
+
                 <div className="form-group">
                   <label htmlFor="space-name">Space Name</label>
 
@@ -281,7 +346,8 @@ const Dashboard = () => {
                   />
                 </div>
 
-                {/* Description */}
+                {/* DESCRIPTION */}
+
                 <div className="form-group">
                   <label htmlFor="space-description">Description</label>
 
@@ -293,11 +359,12 @@ const Dashboard = () => {
                     value={formData.description}
                     onChange={handleInputChange}
                     disabled={creating}
-                    rows="4"
+                    rows={4}
                   />
                 </div>
 
-                {/* Icon + Color */}
+                {/* ICON + COLOR */}
+
                 <div className="form-row">
                   <div className="form-group">
                     <label htmlFor="space-icon">Icon</label>
@@ -308,7 +375,7 @@ const Dashboard = () => {
                       className="form-input"
                       type="text"
                       placeholder="🚀"
-                      maxLength="4"
+                      maxLength={4}
                       value={formData.icon}
                       onChange={handleInputChange}
                       disabled={creating}
@@ -330,10 +397,12 @@ const Dashboard = () => {
                   </div>
                 </div>
 
-                {/* Error */}
+                {/* FORM ERROR */}
+
                 {formError && <div className="form-error">{formError}</div>}
 
-                {/* Actions */}
+                {/* ACTIONS */}
+
                 <div className="modal-actions">
                   <button
                     className="cancel-button"
