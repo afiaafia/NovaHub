@@ -1,9 +1,8 @@
 import { useEffect, useState } from 'react';
-import { getSpaces, createSpace, deleteSpace } from '../services/spaceService';
-
+import { getSpaces, createSpace } from '../services/spaceService';
 import './Dashboard.css';
 
-const DEFAULT_FORM = {
+const initialForm = {
   name: '',
   description: '',
   icon: '🚀',
@@ -12,20 +11,18 @@ const DEFAULT_FORM = {
 
 const Dashboard = () => {
   const [spaces, setSpaces] = useState([]);
-
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
 
   const [showCreateModal, setShowCreateModal] = useState(false);
   const [creating, setCreating] = useState(false);
-  const [deletingId, setDeletingId] = useState(null);
-
   const [formError, setFormError] = useState('');
-  const [formData, setFormData] = useState(DEFAULT_FORM);
 
-  // ================================
+  const [formData, setFormData] = useState(initialForm);
+
+  // ==========================================
   // LOAD SPACES
-  // ================================
+  // ==========================================
 
   const loadSpaces = async () => {
     try {
@@ -34,15 +31,9 @@ const Dashboard = () => {
 
       const response = await getSpaces();
 
-      /*
-        Backend response:
-        {
-          success: true,
-          data: [...]
-        }
-      */
+      const data = Array.isArray(response?.data) ? response.data : [];
 
-      setSpaces(Array.isArray(response?.data) ? response.data : []);
+      setSpaces(data);
     } catch (err) {
       console.error('Failed to load spaces:', err);
 
@@ -56,13 +47,13 @@ const Dashboard = () => {
     loadSpaces();
   }, []);
 
-  // ================================
+  // ==========================================
   // MODAL
-  // ================================
+  // ==========================================
 
   const openCreateModal = () => {
     setFormError('');
-    setFormData(DEFAULT_FORM);
+    setFormData(initialForm);
     setShowCreateModal(true);
   };
 
@@ -71,12 +62,12 @@ const Dashboard = () => {
 
     setShowCreateModal(false);
     setFormError('');
-    setFormData(DEFAULT_FORM);
+    setFormData(initialForm);
   };
 
-  // ================================
-  // FORM INPUT
-  // ================================
+  // ==========================================
+  // INPUT
+  // ==========================================
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -86,21 +77,17 @@ const Dashboard = () => {
       [name]: value,
     }));
 
-    if (formError) {
-      setFormError('');
-    }
+    setFormError('');
   };
 
-  // ================================
+  // ==========================================
   // CREATE SPACE
-  // ================================
+  // ==========================================
 
   const handleCreateSpace = async (event) => {
     event.preventDefault();
 
     const name = formData.name.trim();
-    const description = formData.description.trim();
-    const icon = formData.icon.trim() || '🚀';
 
     if (!name) {
       setFormError('Space name is required.');
@@ -113,15 +100,14 @@ const Dashboard = () => {
 
       await createSpace({
         name,
-        description,
-        icon,
+        description: formData.description.trim(),
+        icon: formData.icon.trim() || '🚀',
         color: formData.color,
       });
 
       await loadSpaces();
 
-      setShowCreateModal(false);
-      setFormData(DEFAULT_FORM);
+      closeCreateModal();
     } catch (err) {
       console.error('Failed to create space:', err);
 
@@ -131,44 +117,16 @@ const Dashboard = () => {
     }
   };
 
-  // ================================
-  // DELETE SPACE
-  // ================================
-
-  const handleDeleteSpace = async (id) => {
-    if (!id) return;
-
-    const confirmed = window.confirm(
-      'Are you sure you want to delete this space?'
-    );
-
-    if (!confirmed) return;
-
-    try {
-      setDeletingId(id);
-
-      await deleteSpace(id);
-
-      setSpaces((previous) => previous.filter((space) => space._id !== id));
-    } catch (err) {
-      console.error('Failed to delete space:', err);
-
-      setError(err?.message || 'Unable to delete the space. Please try again.');
-    } finally {
-      setDeletingId(null);
-    }
-  };
-
-  // ================================
+  // ==========================================
   // RENDER
-  // ================================
+  // ==========================================
 
   return (
     <section className="dashboard-page">
       <div className="dashboard-container">
         {/* ================= HEADER ================= */}
 
-        <div className="dashboard-header">
+        <header className="dashboard-header">
           <div>
             <span className="dashboard-eyebrow">WORKSPACE</span>
 
@@ -187,7 +145,7 @@ const Dashboard = () => {
           >
             + Create Space
           </button>
-        </div>
+        </header>
 
         {/* ================= LOADING ================= */}
 
@@ -195,7 +153,9 @@ const Dashboard = () => {
           <div className="dashboard-state">
             <div className="loading-spinner" />
 
-            <p>Loading your spaces...</p>
+            <h3>Loading your spaces...</h3>
+
+            <p>Please wait while NovaHub loads your workspace.</p>
           </div>
         )}
 
@@ -227,9 +187,7 @@ const Dashboard = () => {
 
             <h3>No spaces yet</h3>
 
-            <p>
-              Create your first space to start organizing your work and ideas.
-            </p>
+            <p>Create your first space to start organizing your work.</p>
 
             <button
               className="dashboard-primary-button"
@@ -241,7 +199,7 @@ const Dashboard = () => {
           </div>
         )}
 
-        {/* ================= SPACES ================= */}
+        {/* ================= SPACE GRID ================= */}
 
         {!loading && !error && spaces.length > 0 && (
           <div className="space-grid">
@@ -260,11 +218,9 @@ const Dashboard = () => {
                   <button
                     className="menu-button"
                     type="button"
-                    aria-label={`Delete ${space.name}`}
-                    onClick={() => handleDeleteSpace(space._id)}
-                    disabled={deletingId === space._id}
+                    aria-label={`Options for ${space.name}`}
                   >
-                    {deletingId === space._id ? '...' : '⋯'}
+                    ⋯
                   </button>
                 </div>
 
@@ -280,7 +236,7 @@ const Dashboard = () => {
               </article>
             ))}
 
-            {/* CREATE CARD */}
+            {/* Create card */}
 
             <button
               className="create-card"
@@ -304,6 +260,8 @@ const Dashboard = () => {
               className="create-modal"
               onClick={(event) => event.stopPropagation()}
             >
+              {/* Modal Header */}
+
               <div className="modal-header">
                 <div>
                   <span className="dashboard-eyebrow">NEW SPACE</span>
@@ -321,14 +279,16 @@ const Dashboard = () => {
                   type="button"
                   onClick={closeCreateModal}
                   disabled={creating}
-                  aria-label="Close"
+                  aria-label="Close modal"
                 >
                   ×
                 </button>
               </div>
 
+              {/* Form */}
+
               <form onSubmit={handleCreateSpace}>
-                {/* NAME */}
+                {/* Name */}
 
                 <div className="form-group">
                   <label htmlFor="space-name">Space Name</label>
@@ -346,7 +306,7 @@ const Dashboard = () => {
                   />
                 </div>
 
-                {/* DESCRIPTION */}
+                {/* Description */}
 
                 <div className="form-group">
                   <label htmlFor="space-description">Description</label>
@@ -363,7 +323,7 @@ const Dashboard = () => {
                   />
                 </div>
 
-                {/* ICON + COLOR */}
+                {/* Icon + Color */}
 
                 <div className="form-row">
                   <div className="form-group">
@@ -397,11 +357,11 @@ const Dashboard = () => {
                   </div>
                 </div>
 
-                {/* FORM ERROR */}
+                {/* Form Error */}
 
                 {formError && <div className="form-error">{formError}</div>}
 
-                {/* ACTIONS */}
+                {/* Actions */}
 
                 <div className="modal-actions">
                   <button
