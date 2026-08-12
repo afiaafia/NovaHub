@@ -1,69 +1,129 @@
+import { useEffect, useState } from 'react';
+import { getSpaces } from '../services/spaceService';
+import './Dashboard.css';
+
 const Dashboard = () => {
+  const [spaces, setSpaces] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState('');
+
+  useEffect(() => {
+    const loadSpaces = async () => {
+      try {
+        setLoading(true);
+        setError('');
+
+        const response = await getSpaces();
+
+        setSpaces(response.data || []);
+      } catch (err) {
+        console.error('Failed to load spaces:', err);
+        setError('Unable to load your spaces. Please try again.');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadSpaces();
+  }, []);
+
   return (
     <section className="dashboard-page">
-      <div className="container">
+      <div className="dashboard-container">
+        {/* Header */}
         <div className="dashboard-header">
           <div>
-            <span className="eyebrow">WORKSPACE</span>
+            <span className="dashboard-eyebrow">WORKSPACE</span>
 
             <h1>Your Spaces</h1>
 
             <p>Organize your work, learning, and projects.</p>
           </div>
 
-          <button className="primary-button">+ Create Space</button>
+          <button className="dashboard-primary-button">+ Create Space</button>
         </div>
 
-        <div className="space-grid">
-          <article className="space-card">
-            <div className="space-card-top">
-              <div className="space-icon">🌐</div>
+        {/* Loading */}
+        {loading && (
+          <div className="dashboard-state">
+            <div className="loading-spinner"></div>
 
-              <button className="menu-button">⋯</button>
-            </div>
+            <p>Loading your spaces...</p>
+          </div>
+        )}
 
-            <h3>Modern Web Development</h3>
+        {/* Error */}
+        {!loading && error && (
+          <div className="dashboard-state error-state">
+            <div className="state-icon">!</div>
 
-            <p>
-              Learning HTML, CSS, JavaScript, React and backend development.
-            </p>
+            <h3>Something went wrong</h3>
 
-            <div className="space-card-footer">
-              <span>Updated recently</span>
+            <p>{error}</p>
+          </div>
+        )}
 
-              <span>→</span>
-            </div>
-          </article>
+        {/* Empty */}
+        {!loading && !error && spaces.length === 0 && (
+          <div className="dashboard-state empty-state">
+            <div className="state-icon">+</div>
 
-          <article className="space-card">
-            <div className="space-card-top">
-              <div className="space-icon">🤖</div>
+            <h3>No spaces yet</h3>
 
-              <button className="menu-button">⋯</button>
-            </div>
+            <p>Create your first space to start organizing your work.</p>
 
-            <h3>AI & Machine Learning</h3>
+            <button className="dashboard-primary-button">
+              Create Your First Space
+            </button>
+          </div>
+        )}
 
-            <p>
-              Exploring artificial intelligence, machine learning and
-              intelligent systems.
-            </p>
+        {/* Spaces */}
+        {!loading && !error && spaces.length > 0 && (
+          <div className="space-grid">
+            {spaces.map((space) => (
+              <article className="space-card" key={space._id}>
+                <div className="space-card-top">
+                  <div
+                    className="space-icon"
+                    style={{
+                      backgroundColor: `${space.color || '#6366f1'}20`,
+                    }}
+                  >
+                    {space.icon || '🚀'}
+                  </div>
 
-            <div className="space-card-footer">
-              <span>Coming soon</span>
+                  <button
+                    className="menu-button"
+                    type="button"
+                    aria-label={`Options for ${space.name}`}
+                  >
+                    ⋯
+                  </button>
+                </div>
 
-              <span>→</span>
-            </div>
-          </article>
+                <h3>{space.name}</h3>
 
-          <article className="create-card">
-            <div className="create-icon">+</div>
+                <p>{space.description || 'No description available.'}</p>
 
-            <h3>Create a new space</h3>
+                <div className="space-card-footer">
+                  <span>Space</span>
 
-            <p>Start organizing something new.</p>
-          </article>
-        </div>
+                  <span className="space-arrow">→</span>
+                </div>
+              </article>
+            ))}
+
+            {/* Create new space card */}
+            <button className="create-card" type="button">
+              <div className="create-icon">+</div>
+
+              <h3>Create a new space</h3>
+
+              <p>Start organizing something new.</p>
+            </button>
+          </div>
+        )}
       </div>
     </section>
   );
