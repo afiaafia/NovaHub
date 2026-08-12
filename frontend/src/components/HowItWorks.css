@@ -1,7 +1,3 @@
-/* =========================================
-   HOW IT WORKS
-========================================= */
-
 .how-it-works {
   position: relative;
 
@@ -22,10 +18,6 @@
 }
 
 
-/* =========================================
-   BACKGROUND
-========================================= */
-
 .how-it-works::before {
   content: "";
 
@@ -35,14 +27,14 @@
   height: 500px;
 
   left: 50%;
-  top: 35%;
+  top: 45%;
 
   transform: translate(-50%, -50%);
 
   border-radius: 50%;
 
   background:
-    rgba(99, 102, 241, 0.06);
+    rgba(124, 58, 237, 0.07);
 
   filter: blur(120px);
 
@@ -50,41 +42,35 @@
 }
 
 
-/* =========================================
-   TITLE
-========================================= */
-
-.how-it-works .section-title {
+.how-it-works-container {
   position: relative;
 
   z-index: 1;
 
-  margin: 0 auto 60px;
-
-  text-align: center;
-
-  font-size: clamp(
-    38px,
-    5vw,
-    62px
+  width: min(
+    1180px,
+    calc(100% - 48px)
   );
 
-  font-weight: 700;
-
-  line-height: 1.05;
-
-  letter-spacing: -0.045em;
-
-  color: #ffffff;
+  margin: 0 auto;
 }
 
 
-.how-it-works .section-title::before {
-  content: "HOW IT WORKS";
+/* Heading */
 
-  display: block;
+.how-it-works-heading {
+  max-width: 650px;
 
-  margin-bottom: 17px;
+  margin: 0 auto 70px;
+
+  text-align: center;
+}
+
+
+.how-it-works-eyebrow {
+  display: inline-block;
+
+  margin-bottom: 18px;
 
   color: #a78bfa;
 
@@ -96,13 +82,31 @@
 }
 
 
-.how-it-works .section-title {
+.how-it-works-heading h2 {
+  margin: 0;
+
+  color: #ffffff;
+
+  font-size: clamp(
+    40px,
+    5vw,
+    64px
+  );
+
+  line-height: 1.02;
+
+  font-weight: 700;
+
+  letter-spacing: -0.045em;
+}
+
+
+.how-it-works-heading h2 span {
   background:
     linear-gradient(
       100deg,
-      #ffffff 25%,
-      #c4b5fd 60%,
-      #60a5fa 100%
+      #c4b5fd,
+      #60a5fa
     );
 
   -webkit-background-clip: text;
@@ -112,22 +116,23 @@
 }
 
 
-/* =========================================
-   STEPS
-========================================= */
+.how-it-works-heading p {
+  max-width: 560px;
+
+  margin: 24px auto 0;
+
+  color:
+    rgba(255, 255, 255, 0.38);
+
+  font-size: 13px;
+
+  line-height: 1.8;
+}
+
+
+/* Steps */
 
 .steps {
-  position: relative;
-
-  z-index: 1;
-
-  width: min(
-    1180px,
-    calc(100% - 48px)
-  );
-
-  margin: 0 auto;
-
   display: grid;
 
   grid-template-columns:
@@ -137,45 +142,41 @@
 }
 
 
-/* =========================================
-   STEP CARD
-========================================= */
-
 .step {
   position: relative;
 
-  min-height: 260px;
-
-  padding: 28px;
+  min-height: 285px;
 
   overflow: hidden;
+
+  padding: 28px;
 
   border:
     1px solid
     rgba(255, 255, 255, 0.07);
 
-  border-radius: 20px;
+  border-radius: 22px;
 
   background:
     linear-gradient(
       145deg,
       rgba(255, 255, 255, 0.045),
-      rgba(255, 255, 255, 0.015)
+      rgba(255, 255, 255, 0.012)
     );
+
+  backdrop-filter: blur(15px);
+
+  -webkit-backdrop-filter: blur(15px);
 
   transition:
     transform 0.35s ease,
     border-color 0.35s ease,
     background 0.35s ease;
-
-  backdrop-filter: blur(12px);
-
-  -webkit-backdrop-filter: blur(12px);
 }
 
 
 .step:hover {
-  transform: translateY(-7px);
+  transform: translateY(-8px);
 
   border-color:
     rgba(139, 92, 246, 0.25);
@@ -184,60 +185,34 @@
     linear-gradient(
       145deg,
       rgba(139, 92, 246, 0.08),
-      rgba(255, 255, 255, 0.02)
+      rgba(255, 255, 255, 0.018)
     );
 }
 
 
-/* =========================================
-   STEP NUMBER
-========================================= */
+.step-top {
+  position: relative;
 
-.step::before {
-  content: "";
+  display: flex;
 
-  position: absolute;
-
-  top: -70px;
-  right: -70px;
-
-  width: 160px;
-  height: 160px;
-
-  border-radius: 50%;
-
-  background:
-    rgba(124, 58, 237, 0.10);
-
-  filter: blur(25px);
-
-  transition:
-    transform 0.5s ease;
-}
-
-
-.step:hover::before {
-  transform:
-    scale(1.25);
+  align-items: center;
 }
 
 
 .step-number {
-  display: inline-flex;
+  width: 46px;
+  height: 46px;
+
+  display: flex;
 
   align-items: center;
   justify-content: center;
 
-  width: 42px;
-  height: 42px;
-
-  margin-bottom: 50px;
-
   border:
     1px solid
-    rgba(139, 92, 246, 0.18);
+    rgba(139, 92, 246, 0.2);
 
-  border-radius: 12px;
+  border-radius: 13px;
 
   background:
     rgba(139, 92, 246, 0.07);
@@ -247,26 +222,45 @@
   font-size: 11px;
 
   font-weight: 700;
-
-  letter-spacing: 0.04em;
 }
 
 
-/* =========================================
-   STEP HEADING
-========================================= */
+.step-connector {
+  position: absolute;
 
-.step h3 {
-  position: relative;
+  left: 60px;
 
-  z-index: 1;
+  width: calc(100% + 280px);
 
-  margin: 0 0 12px;
+  height: 1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(139, 92, 246, 0.25),
+      rgba(96, 165, 250, 0.08)
+    );
+
+  opacity: 0.6;
+}
+
+
+.step-content {
+  position: absolute;
+
+  left: 28px;
+  right: 28px;
+  bottom: 28px;
+}
+
+
+.step-content h3 {
+  margin: 0 0 11px;
 
   color:
-    rgba(255, 255, 255, 0.88);
+    rgba(255, 255, 255, 0.9);
 
-  font-size: 18px;
+  font-size: 19px;
 
   font-weight: 650;
 
@@ -274,15 +268,7 @@
 }
 
 
-/* =========================================
-   STEP DESCRIPTION
-========================================= */
-
-.step p {
-  position: relative;
-
-  z-index: 1;
-
+.step-content p {
   max-width: 290px;
 
   margin: 0;
@@ -296,41 +282,34 @@
 }
 
 
-/* =========================================
-   CONNECTING LINE
-========================================= */
-
-.steps::before {
-  content: "";
-
+.step-glow {
   position: absolute;
 
-  top: 50%;
+  width: 150px;
+  height: 150px;
 
-  left: 10%;
+  right: -90px;
+  bottom: -90px;
 
-  right: 10%;
-
-  height: 1px;
+  border-radius: 50%;
 
   background:
-    linear-gradient(
-      90deg,
-      transparent,
-      rgba(139, 92, 246, 0.25),
-      rgba(96, 165, 250, 0.25),
-      transparent
-    );
+    rgba(124, 58, 237, 0.15);
 
-  pointer-events: none;
+  filter: blur(35px);
 
-  z-index: -1;
+  opacity: 0;
+
+  transition: opacity 0.35s ease;
 }
 
 
-/* =========================================
-   TABLET
-========================================= */
+.step:hover .step-glow {
+  opacity: 1;
+}
+
+
+/* Tablet */
 
 @media (max-width: 850px) {
 
@@ -339,30 +318,25 @@
   }
 
   .steps {
-    grid-template-columns:
-      1fr;
+    grid-template-columns: 1fr;
 
     max-width: 620px;
-  }
 
-  .steps::before {
-    display: none;
+    margin: 0 auto;
   }
 
   .step {
-    min-height: 220px;
+    min-height: 230px;
   }
 
-  .step-number {
-    margin-bottom: 35px;
+  .step-connector {
+    display: none;
   }
 
 }
 
 
-/* =========================================
-   MOBILE
-========================================= */
+/* Mobile */
 
 @media (max-width: 620px) {
 
@@ -370,30 +344,35 @@
     padding: 80px 0;
   }
 
-  .how-it-works .section-title {
-    font-size: 39px;
-
-    margin-bottom: 42px;
+  .how-it-works-container {
+    width:
+      calc(100% - 32px);
   }
 
-  .steps {
-    width: calc(100% - 32px);
+  .how-it-works-heading {
+    margin-bottom: 45px;
+  }
 
-    gap: 12px;
+  .how-it-works-heading h2 {
+    font-size: 40px;
+  }
+
+  .how-it-works-heading p {
+    font-size: 12px;
   }
 
   .step {
-    min-height: 210px;
+    min-height: 220px;
 
-    padding: 23px;
+    padding: 22px;
+
+    border-radius: 18px;
   }
 
-  .step h3 {
-    font-size: 16px;
-  }
-
-  .step p {
-    font-size: 10px;
+  .step-content {
+    left: 22px;
+    right: 22px;
+    bottom: 22px;
   }
 
 }

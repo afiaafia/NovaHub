@@ -1,10 +1,9 @@
 import './About.css';
 
-function About() {
+const About = () => {
   return (
     <section className="about-section" id="about">
       <div className="about-container">
-        {/* Left Content */}
         <div className="about-content">
           <span className="about-badge">ABOUT NOVAHUB</span>
 
@@ -43,7 +42,6 @@ function About() {
           </div>
         </div>
 
-        {/* Right Visual */}
         <div className="about-visual">
           <div className="about-card main-card">
             <div className="card-top">
@@ -51,6 +49,7 @@ function About() {
 
               <div>
                 <span className="card-label">YOUR WORKSPACE</span>
+
                 <h3>NovaHub</h3>
               </div>
             </div>
@@ -58,6 +57,7 @@ function About() {
             <div className="workspace-preview">
               <div className="preview-item">
                 <span className="preview-icon">📚</span>
+
                 <div>
                   <strong>Learning</strong>
                   <small>Courses & Notes</small>
@@ -66,6 +66,7 @@ function About() {
 
               <div className="preview-item">
                 <span className="preview-icon">💻</span>
+
                 <div>
                   <strong>Projects</strong>
                   <small>Build & Create</small>
@@ -74,6 +75,7 @@ function About() {
 
               <div className="preview-item">
                 <span className="preview-icon">💡</span>
+
                 <div>
                   <strong>Ideas</strong>
                   <small>Think & Explore</small>
@@ -83,22 +85,27 @@ function About() {
 
             <div className="card-footer">
               <span>Everything in one place</span>
+
               <span className="footer-arrow">→</span>
             </div>
           </div>
 
           <div className="floating-card floating-card-one">
             <span>✓</span>
+
             <div>
               <strong>Stay organized</strong>
+
               <small>Focus on what matters</small>
             </div>
           </div>
 
           <div className="floating-card floating-card-two">
             <span>⚡</span>
+
             <div>
               <strong>Work smarter</strong>
+
               <small>Less switching, more doing</small>
             </div>
           </div>
@@ -106,6 +113,6 @@ function About() {
       </div>
     </section>
   );
-}
+};
 
 export default About;
